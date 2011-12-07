@@ -6,4 +6,6 @@ class Transaction < ActiveRecord::Base
                         :with => /\A-?[[:digit:]]+\.?[[:digit:]]{,2}\Z/,
                         :message => "Must be a number with at most two decimal places."
                       }
+                      
+  belongs_to :envelope
 end
