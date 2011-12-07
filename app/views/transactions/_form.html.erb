@@ -29,7 +29,8 @@
   </div>
   <div class="field">
     <%= f.label :envelope_id %><br />
-    <%= f.text_field :envelope_id %>
+    <!-- Should filter out inactive here... -->
+    <%= f.collection_select(:envelope_id, Envelope.all, :id, :name, :include_blank => true ) %>
   </div>
   <div class="actions">
     <%= f.submit %>
