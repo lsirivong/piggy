@@ -3,15 +3,11 @@
   <tr>
     <th>Date</th>
     <th>Vendor</th>
-    <th>Desc</th>
     <th>Amount</th>
     <th>Envelope</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
-<%= render @transactions unless @transactions.nil? %>
+<%= render @transactions %>
 
 </table>
 <% end %>
