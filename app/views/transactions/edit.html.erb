@@ -3,4 +3,5 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @transaction %> |
+<%= link_to 'Delete', @transaction, confirm: 'Are you sure?', method: :delete %> |
 <%= link_to 'Back', transactions_path %>

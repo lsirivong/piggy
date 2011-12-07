@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Total</th>
     <th>Active</th>
     <th></th>
     <th></th>
@@ -12,6 +13,7 @@
 <% @envelopes.each do |envelope| %>
   <tr>
     <td><%= envelope.name %></td>
+    <td><%= envelope.total %></td>
     <td><%= envelope.active %></td>
     <td><%= link_to 'Show', envelope %></td>
     <td><%= link_to 'Edit', edit_envelope_path(envelope) %></td>
