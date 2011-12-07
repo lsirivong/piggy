@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date: 2011-12-07
+  vendor: MyString
+  desc: MyText
+  amount: 9.99
+
+two:
+  date: 2011-12-07
+  vendor: MyString
+  desc: MyText
+  amount: 9.99
