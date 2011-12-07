@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: OneName
+  active: false
+
+two:
+  name: TwoName
+  active: false
+
+meals:
+  name: Meals for Today
+  active: true
+  

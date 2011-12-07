@@ -1,0 +1,13 @@
+<% unless @transactions.nil? || !@transactions.any? %>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Vendor</th>
+    <th>Amount</th>
+    <th>Envelope</th>
+  </tr>
+
+<%= render @transactions %>
+
+</table>
+<% end %>

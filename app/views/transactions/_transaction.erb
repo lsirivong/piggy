@@ -1,0 +1,10 @@
+<tr>
+  <td><%= link_to transaction.date, transaction %></td>
+  <td><%= transaction.vendor %></td>
+  <td><%= transaction.amount %></td>
+  <td>
+    <% unless transaction.envelope.nil? %>
+      <%= link_to transaction.envelope.name, transaction.envelope %>
+    <% end %>
+  </td>
+</tr>
