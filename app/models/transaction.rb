@@ -4,6 +4,6 @@ class Transaction < ActiveRecord::Base
   validates :amount,  :presence => true,
                       :format   => { 
                         :with => /\A-?[[:digit:]]+\.?[[:digit:]]{,2}\Z/,
-                        :message => "Amount may not have more than two decimal places."
+                        :message => "Must be a number with at most two decimal places."
                       }
 end
