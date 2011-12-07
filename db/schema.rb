@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111207183636) do
+ActiveRecord::Schema.define(:version => 20111207200715) do
+
+  create_table "envelopes", :force => true do |t|
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
 
   create_table "transactions", :force => true do |t|
     t.date     "date"
@@ -20,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20111207183636) do
     t.decimal  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "envelope_id"
   end
 
 end

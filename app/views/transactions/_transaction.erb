@@ -1,0 +1,8 @@
+<tr>
+  <td><%= transaction.date %></td>
+  <td><%= transaction.vendor %></td>
+  <td><%= transaction.desc %></td>
+  <td><%= transaction.amount %></td>
+  <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
+  <td><%= link_to 'Destroy', transaction, confirm: 'Are you sure?', method: :delete %></td>
+</tr>

@@ -1,28 +1,6 @@
 <h1>Listing transactions</h1>
 
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Vendor</th>
-    <th>Desc</th>
-    <th>Amount</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @transactions.each do |transaction| %>
-  <tr>
-    <td><%= transaction.date %></td>
-    <td><%= transaction.vendor %></td>
-    <td><%= transaction.desc %></td>
-    <td><%= transaction.amount %></td>
-    <td><%= link_to 'Show', transaction %></td>
-    <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
-    <td><%= link_to 'Destroy', transaction, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+<%= render 'table' %>
 
 <br />
 

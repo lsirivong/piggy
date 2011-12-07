@@ -1,4 +1,6 @@
 Piggy::Application.routes.draw do
+  resources :envelopes
+
   resources :transactions
 
   # The priority is based upon order of creation:
