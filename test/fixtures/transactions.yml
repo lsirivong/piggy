@@ -11,3 +11,17 @@ two:
   vendor: MyString
   desc: MyText
   amount: 9.99
+
+lunch:
+  date: 2011-12-07
+  vendor: Burger King
+  desc: I ate a hamburger and fries.
+  amount: -5.67
+  envelope: meals
+
+dinner:
+  date: 2011-12-07
+  vendor: Burrito Drive
+  desc: A delicious chicken burrito.
+  amount: -8.23
+  envelope: meals
