@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 .transactions {
   max-width: 500px;
   border: 1px solid;
@@ -22,6 +21,13 @@
 .amount {
   float: right;
   clear: right;
+  font-style: normal;
+}
+.amount.neg {
+  color: red;
+}
+.amount.pos {
+  color: green;
 }
 
 .metadata {

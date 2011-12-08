@@ -1,6 +1,10 @@
 <li>
   <%= transaction.vendor %>
-  <i class="amount"><%= transaction.amount %></i>
+  
+  <% invert_transaction = false if local_assigns[:invert_transaction].nil? %>
+
+  <%= amount_tag transaction.amount, invert_transaction %>
+  
   <section class="metadata">
     <%= link_to transaction.date, transaction %> |
     <% unless transaction.envelope.nil? %>
