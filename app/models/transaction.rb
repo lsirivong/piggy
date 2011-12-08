@@ -7,12 +7,20 @@ class Transaction < ActiveRecord::Base
                         :message => "Must be a number with at most two decimal places."
                       }
   validate :envelope_must_exist_if_given
+  validate :goal_must_exist_if_given
                       
   belongs_to :envelope
+  belongs_to :goal
   
   def envelope_must_exist_if_given
     if !envelope_id.nil? && envelope.nil?
       errors.add(:envelope, "assigned envelope does not exist")
+    end
+  end
+  
+  def goal_must_exist_if_given
+    if !goal_id.nil? && goal.nil?
+      errors.add(:goal, "assigned goal does not exist")
     end
   end
 end
