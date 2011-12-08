@@ -1,9 +1,6 @@
+<div class="envelope">
 <h3><%= envelope.name %></h3>
-<p>
-  <b>Active:</b>
-  <%= envelope.active %>
-</p>
-<p>
-  <b>Transaction Total:</b>
-  <%= envelope.total %>
-</p>
+<i class="status">(<%= envelope.active? ? 'Active' : 'Inactive' %>)</i>
+<h4><%= envelope.total %></h4>
+<%= render :partial => 'transactions/table', :locals => { :transactions => envelope.transactions } %>
+</div>

@@ -1,6 +1,6 @@
 <h1>Your Transaction Ledger</h1>
 
-<%= render 'table' %>
+<%= render :partial => 'table', :locals => { :transactions => @transactions } %>
 
 <br />
 

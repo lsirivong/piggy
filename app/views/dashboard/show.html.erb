@@ -1,11 +1,4 @@
 <h1>Dashboard</h1>
-
-<div>
-  <b>Untracked Transactions</b>
-  <%= render 'transactions/table' %>
-  <p><%= link_to 'New Transaction', new_transaction_path %></p>
-</div>
-
 <p><b>Envelopes:</b> <%= @envelopes.count %> </p>
 <div class="envelopes">
   <%= render @envelopes %>
