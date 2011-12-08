@@ -1,20 +1,6 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @goal.name %>
-</p>
-
-<p>
-  <b>Deadline:</b>
-  <%= @goal.deadline %>
-</p>
-
-<p>
-  <b>Amount:</b>
-  <%= @goal.amount %>
-</p>
-
+<h2>Goal:</h2>
+<%= render @goal %>
 
 <%= link_to 'Edit', edit_goal_path(@goal) %> |
 <%= link_to 'Back', goals_path %>

@@ -1,14 +1,6 @@
 <% unless transactions.nil? || !transactions.any? %>
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Vendor</th>
-    <th>Amount</th>
-    <th>Envelope</th>
-    <th>Goal</th>
-  </tr>
-
-<%= render transactions %>
-
-</table>
+<ol class="transactions">  
+  <% invert_transactions = false if local_assigns[:invert_transactions].nil? %>
+  <%= render :partial => transactions, :locals => { :invert_transaction => invert_transactions } %>
+</ol>
 <% end %>

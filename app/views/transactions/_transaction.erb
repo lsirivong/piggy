@@ -1,19 +1,22 @@
-<tr>
-  <td><%= link_to transaction.date, transaction %></td>
-  <td><%= transaction.vendor %></td>
-  <td><%= transaction.amount %></td>
-  <td>
+<li>
+  <%= transaction.vendor %>
+  
+  <% invert_transaction = false if local_assigns[:invert_transaction].nil? %>
+
+  <%= amount_tag transaction.amount, invert_transaction %>
+  
+  <section class="metadata">
+    <%= link_to transaction.date, transaction %> |
     <% unless transaction.envelope.nil? %>
       <%= link_to transaction.envelope.name, transaction.envelope %>
     <% else %>
       (none)
     <% end %>
-  </td>
-  <td>
+   | 
     <% unless transaction.goal.nil? %>
       <%= link_to transaction.goal.name, transaction.goal %>
     <% else %>
       (none)
     <% end %>
-  </td>
-</tr>
+  </section>
+</li>
