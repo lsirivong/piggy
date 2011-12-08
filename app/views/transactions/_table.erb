@@ -1,14 +1,5 @@
 <% unless transactions.nil? || !transactions.any? %>
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Vendor</th>
-    <th>Amount</th>
-    <th>Envelope</th>
-    <th>Goal</th>
-  </tr>
-
-<%= render transactions %>
-
-</table>
+<ol class="transactions">
+  <%= render transactions %>
+</ol>
 <% end %>

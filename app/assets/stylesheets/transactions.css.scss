@@ -1,3 +1,38 @@
 // Place all the styles related to the transactions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.transactions {
+  max-width: 500px;
+  border: 1px solid;
+  font-family: 'Courier New';
+  background-color: #fff9b0;
+}
+.transactions li {
+  border-top: 1px solid;
+}
+.transactions li:first-child {
+  border-top: none;
+}
+.transactions, .transactions li {
+  border-color: #e2dba2;
+}
+
+.amount {
+  float: right;
+  clear: right;
+}
+
+.metadata {
+  text-align: right;
+}
+.metadata, .metadata a, .metadata a:visited {
+  color: #c0ba8e;
+}
+.metadata:hover, .metadata:hover a, .metadata:hover a:visited {
+  color: #333;
+}
+.metadata:hover a:hover {
+  color: #fff;
+}
