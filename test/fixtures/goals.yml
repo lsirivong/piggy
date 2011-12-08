@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  deadline: 2011-12-08
+  amount: 9.99
+
+two:
+  name: MyString
+  deadline: 2011-12-08
+  amount: 9.99

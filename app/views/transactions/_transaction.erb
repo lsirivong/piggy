@@ -5,6 +5,15 @@
   <td>
     <% unless transaction.envelope.nil? %>
       <%= link_to transaction.envelope.name, transaction.envelope %>
+    <% else %>
+      (none)
+    <% end %>
+  </td>
+  <td>
+    <% unless transaction.goal.nil? %>
+      <%= link_to transaction.goal.name, transaction.goal %>
+    <% else %>
+      (none)
     <% end %>
   </td>
 </tr>

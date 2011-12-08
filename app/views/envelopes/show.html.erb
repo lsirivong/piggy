@@ -1,16 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h3><%= @envelope.name %></h3>
-<p>
-  <b>Active:</b>
-  <%= @envelope.active %>
-</p>
-<p>
-  <b>Transaction Total:</b>
-  <%= @envelope.total %>
-</p>
-
-<%= render 'transactions/table' %>
+<%= render @envelope %>
 
 <%= link_to 'Edit', edit_envelope_path(@envelope) %> |
 <%= link_to 'Back', envelopes_path %>
