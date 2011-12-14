@@ -1,4 +1,11 @@
-$('#<%= "envelope_#{@envelope.id}" %>').html("<%= escape_javascript(render(@envelope)) %>");
+$('#<%= "envelope_#{@envelope.id} .transactions" %>').prepend("<%= escape_javascript(render(@envelope.transactions.last)) %>");
+$('#<%= "envelope_#{@envelope.id} .transactions li" %>').first().css('display', 'none');
+$('#<%= "envelope_#{@envelope.id} .transactions li" %>').first().animate({
+    height: 'toggle'
+  }, 1000, function() {
+    // Animation complete.
+  });
 
 // set focus to first input field of the modified envelope
 $('#<%= "envelope_#{@envelope.id} .fields input" %>').first().trigger('focus');
+$('#<%= "envelope_#{@envelope.id} .fields input" %>').val('');
