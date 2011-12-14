@@ -1,6 +1,15 @@
-<div class="envelope">
-<h3><%= envelope.name %></h3>
+<div class="envelope" id=<%= "envelope_#{envelope.id}" %>>
+<h3><%= link_to envelope.name, envelope %></h3>
 <i class="status">(<%= envelope.active? ? 'Active' : 'Inactive' %>)</i>
 <h4><%= envelope.total %></h4>
+
+<%= form_for(envelope, :remote => true) do |f| %>
+  <%= f.fields_for(:transactions, Transaction.new ) do |builder| %>
+    <%= render("envelopes/transaction_fields", :f => builder) %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 <%= render :partial => 'transactions/table', :locals => { :transactions => envelope.transactions } %>
 </div>

@@ -63,6 +63,7 @@ class EnvelopesController < ApplicationController
     respond_to do |format|
       if @envelope.update_attributes(params[:envelope])
         format.html { redirect_to @envelope, notice: 'Envelope was successfully updated.' }
+        format.js
         format.json { head :ok }
       else
         format.html { render action: "edit" }
