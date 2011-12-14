@@ -1,14 +1,17 @@
 // 1. add the new item to the beginning of the list
-$('#<%= "envelope_#{@envelope.id} .transactions" %>')
-  .prepend("<%= escape_javascript(render(@envelope.transactions.last)) %>")
-  // 2. get the first li and animate it open
-  .children('li').first().css('display', 'none')
-  .animate(
-    { height: 'toggle'},
-     350, function() {
-       // Animation complete.
-    }
-  );
+if ($('#<%= "envelope_#{@envelope.id} .transactions" %>').length)
+{
+  $('#<%= "envelope_#{@envelope.id} .transactions" %>')
+    .prepend("<%= escape_javascript(render(@envelope.transactions.last)) %>")
+    // 2. get the first li and animate it open
+    .children('li').first().css('display', 'none')
+    .animate(
+      { height: 'toggle' },
+       350, function() {
+         // Animation complete.
+      }
+    );
+}
 
 // clear inputs and set focus to first input field of the modified envelope
 $('#<%= "envelope_#{@envelope.id} .fields input" %>').val('')
