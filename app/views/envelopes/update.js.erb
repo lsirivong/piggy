@@ -1,2 +1,4 @@
 $('#<%= "envelope_#{@envelope.id}" %>').html("<%= escape_javascript(render(@envelope)) %>");
 
+// set focus to first input field of the modified envelope
+$('#<%= "envelope_#{@envelope.id} .fields input" %>').first().trigger('focus');

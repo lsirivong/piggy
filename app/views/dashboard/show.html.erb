@@ -1,7 +1,11 @@
 <h1>Dashboard</h1>
 <h2>Envelopes</h2>
 <div class="envelopes">
-  <%= render @envelopes %>
+  <% @envelopes.each do |e| %>
+    <div class="envelope" id=<%= "envelope_#{e.id}" %>>
+      <%= render e %>
+    </div>
+  <% end %>
 </div>
 <h2>Goals</h2>
 <div class="goals">

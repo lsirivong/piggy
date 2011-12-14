@@ -7,3 +7,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+var alerted = false;
+
+function submit_focus(formId) {
+  if (!alerted)
+  {
+    $("#"+formId).trigger("submit.rails");
+  }
+}
+
+function test_focus(selector) {
+  $(selector).first().trigger('focus');
+}
