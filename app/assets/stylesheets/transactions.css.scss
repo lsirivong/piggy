@@ -6,7 +6,10 @@
   max-width: 500px;
   border: 1px solid;
   font-family: 'Courier New';
-  background-color: #fff9b0;
+  background-color: $transaction_background;
+  margin: 0;
+  padding: 6px;
+  padding-left: 33px;
 }
 .transactions li {
   border-top: 1px solid;
@@ -14,8 +17,13 @@
 .transactions li:first-child {
   border-top: none;
 }
-.transactions, .transactions li {
-  border-color: #e2dba2;
+.transaction_entry {
+    background-color: $transaction_background;
+    border: 1px solid;
+    border-bottom: none;
+}
+.transactions, .transactions li, .transaction_entry {
+  border-color: $transaction_border;
 }
 
 .amount {

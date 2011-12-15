@@ -1,0 +1,5 @@
+$transaction_background: #fff9b0;
+$transaction_border: darken(desaturate($transaction_background, 50%), 10%);
+$transaction_input: lighten($transaction_background, 3%);
+$transaction_inset_light: lighten(desaturate($transaction_input, 0%), 6%);
+$transaction_inset_dark: darken(desaturate($transaction_input, 20%), 5%);
