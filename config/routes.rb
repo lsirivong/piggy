@@ -1,4 +1,6 @@
 Piggy::Application.routes.draw do
+  resources :budgets
+
   resources :goals
 
   get "dashboard/show"
