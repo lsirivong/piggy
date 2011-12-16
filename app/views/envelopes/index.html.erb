@@ -4,7 +4,6 @@
   <tr>
     <th>Name</th>
     <th>Total</th>
-    <th>Active</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,7 +13,6 @@
   <tr>
     <td><%= envelope.name %></td>
     <td><%= envelope.total %></td>
-    <td><%= envelope.active %></td>
     <td><%= link_to 'Show', envelope %></td>
     <td><%= link_to 'Edit', edit_envelope_path(envelope) %></td>
     <td><%= link_to 'Destroy', envelope, confirm: 'Are you sure?', method: :delete %></td>

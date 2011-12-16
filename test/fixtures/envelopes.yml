@@ -2,15 +2,13 @@
 
 one:
   name: OneName
-  active: false
   budget: one
 
 two:
   name: TwoName
-  active: false
   budget: two
 
 meals:
   name: Meals for Today
-  active: true
+  budget: one
   
