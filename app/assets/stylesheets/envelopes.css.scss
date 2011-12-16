@@ -15,6 +15,36 @@
 
 .field {
   float: left;
+  height: 2.5em;
+  position: relative;
+  margin: 0;
+}
+.envelope input {
+    position: absolute;
+    padding: 5px 6px;
+    margin: 0;
+    background-color: $transaction_input;
+    border: 1px solid $transaction_inset_dark;
+    border-bottom-color: $transaction_inset_light;
+    border-right-color: $transaction_inset_light;
+    font-family: 'Courier New';
+    font-size: 100%;
+    top: 4px;
+    bottom: 4px;
+}
+.envelope .vendor {
+    width: 80%;
+}
+.envelope .vendor input {
+    left: 4px;
+    right: 2px;
+}
+.envelope .amount {
+    width: 20%;
+}
+.envelope .amount input {
+    left: 2px;
+    right: 4px;
 }
 
 .desc, .actions, .fields {

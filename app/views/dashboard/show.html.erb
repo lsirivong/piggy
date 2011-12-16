@@ -1,13 +1,13 @@
 <h1>Dashboard</h1>
-<h2>Envelopes</h2>
 <div class="envelopes">
+  <h2>Envelopes</h2>
   <% @envelopes.each do |e| %>
     <div class="envelope" id=<%= "envelope_#{e.id}" %>>
       <%= render e %>
     </div>
   <% end %>
 </div>
-<h2>Goals</h2>
 <div class="goals">
+  <h2>Goals</h2>
   <%= render @goals %>
 </div>
