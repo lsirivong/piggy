@@ -1,4 +1,42 @@
 require 'test_helper'
 
 class BudgetTest < ActiveSupport::TestCase
+  test "start date must not be nil" do
+    b = budgets(:one)
+    assert b.valid?
+    b.start_date = nil
+    assert b.invalid?
+    assert b.errors[:start_date].any?
+  end
+  
+  test "end date must not be nil" do
+    b = budgets(:one)
+    assert b.valid?
+    b.end_date = nil
+    assert b.invalid?
+    assert b.errors[:end_date].any?
+  end
+  
+  test "end date may not be before start date" do
+    b = budgets(:one)
+    assert b.valid?
+    b.end_date = b.start_date - 1
+    assert b.invalid?
+    assert b.errors[:end_date].any?
+  end
+  
+  test "end date may not be same as start date" do
+    b = budgets(:one)
+    assert b.valid?
+    b.end_date = b.start_date
+    assert b.invalid?
+    assert b.errors[:end_date].any?
+  end
+  
+  test "end date can be greater than start date" do
+    b = budgets(:one)
+    assert b.valid?
+    b.end_date = b.start_date + 1
+    assert b.valid?
+  end
 end
