@@ -1,0 +1,11 @@
+<h2><%= formatted_date budget.start_date %> &ndash; <%= formatted_date budget.end_date %> <i class="amount"><%= budget.amount %></i></h2>
+
+<div class="envelopes">
+  <h2>Envelopes</h2>
+  <% budget.envelopes.each do |e| %>
+    <div class="envelope" id=<%= "envelope_#{e.id}" %>>
+      <%= render e %>
+    </div>
+  <% end %>
+</div>
+
