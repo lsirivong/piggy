@@ -77,6 +77,7 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to :root }
+      format.js
       format.json { head :ok }
     end
   end

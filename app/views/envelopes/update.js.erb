@@ -1,5 +1,5 @@
 // 1. add the new item to the beginning of the list
-if ($('#<%= "envelope_#{@envelope.id} .transactions" %>').length)
+if ($('#<%= dom_id(@envelope) + " .transactions" %>').length)
 {
   $('#<%= "envelope_#{@envelope.id} .transactions" %>')
     .prepend("<%= escape_javascript(render(@envelope.transactions.last)) %>")

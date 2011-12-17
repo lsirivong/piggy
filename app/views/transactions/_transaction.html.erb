@@ -1,4 +1,4 @@
-<li>
+<li id="<%= dom_id transaction %>" >
   <%= transaction.vendor %>
   
   <% invert_transaction = false if local_assigns[:invert_transaction].nil? %>
@@ -19,6 +19,6 @@
       (none)
     <% end %>
     |
-    <%= link_to 'X', transaction, :method => :delete %>
+    <%= link_to 'X', transaction, :method => :delete, :remote => true %>
   </section>
 </li>
