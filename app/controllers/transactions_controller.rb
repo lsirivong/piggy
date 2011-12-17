@@ -76,7 +76,7 @@ class TransactionsController < ApplicationController
     @transaction.destroy
 
     respond_to do |format|
-      format.html { redirect_to transactions_url }
+      format.html { redirect_to :root }
       format.json { head :ok }
     end
   end

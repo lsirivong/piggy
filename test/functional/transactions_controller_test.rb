@@ -44,6 +44,6 @@ class TransactionsControllerTest < ActionController::TestCase
       delete :destroy, id: @transaction.to_param
     end
 
-    assert_redirected_to transactions_path
+    assert_redirected_to :root
   end
 end
