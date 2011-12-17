@@ -7,12 +7,6 @@
   
   <section class="metadata">
     <%= link_to transaction.date, transaction %> |
-    <% unless transaction.envelope.nil? %>
-      <%= link_to transaction.envelope.name, transaction.envelope %>
-    <% else %>
-      (none)
-    <% end %>
-   | 
     <% unless transaction.goal.nil? %>
       <%= link_to transaction.goal.name, transaction.goal %>
     <% else %>
