@@ -14,7 +14,7 @@
   position: relative;
   margin: 0;
 }
-.envelope input {
+.envelope input[type="text"] {
     position: absolute;
     padding: 5px 6px;
     margin: 0;

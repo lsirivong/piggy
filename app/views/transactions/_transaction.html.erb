@@ -7,7 +7,7 @@
   
   <section class="metadata">
     <%= link_to transaction.date, transaction %> |
-    <%= link_to "Edit", edit_transaction_path(transaction) %> |
+    <%= link_to_edit_transaction("Edit", transaction) %> |
     <% unless transaction.goal.nil? %>
       <%= link_to transaction.goal.name, transaction.goal %>
     <% else %>
