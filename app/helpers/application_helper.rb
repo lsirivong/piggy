@@ -8,7 +8,7 @@ module ApplicationHelper
   end
   
   def link_to_edit_transaction(name, transaction)
-    fields = form_for(transaction) do |f|
+    fields = form_for(transaction, :remote => true) do |f|
       output = render("envelopes/transaction_fields", :f => f)
       output << f.submit
       output
