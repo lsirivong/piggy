@@ -1,5 +1,6 @@
 class Envelope < ActiveRecord::Base
   validates :budget_id, :presence => true
+  validates :budget_percent, :presence => true
   has_many :transactions, :dependent => :nullify
   belongs_to :budget
   validate :budget_must_exist

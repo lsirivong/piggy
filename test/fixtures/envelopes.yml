@@ -3,12 +3,15 @@
 one:
   name: OneName
   budget: one
+  budget_percent: 0
 
 two:
   name: TwoName
   budget: two
+  budget_percent: 50
 
 meals:
   name: Meals for Today
   budget: one
+  budget_percent: 20
   
