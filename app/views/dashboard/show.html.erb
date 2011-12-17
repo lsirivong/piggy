@@ -1,11 +1,7 @@
 <h1>Dashboard</h1>
-<div class="envelopes">
-  <h2>Envelopes</h2>
-  <% @envelopes.each do |e| %>
-    <div class="envelope" id=<%= "envelope_#{e.id}" %>>
-      <%= render e %>
-    </div>
-  <% end %>
+<div class="budgets">
+  <h2>Budgets</h2>
+  <%= render @budgets %>
 </div>
 <div class="goals">
   <h2>Goals</h2>

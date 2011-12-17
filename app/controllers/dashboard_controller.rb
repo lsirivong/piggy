@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   def show
-    @envelopes = Envelope.all
+    @budgets = Budget.all
     @goals = Goal.all
   end
 

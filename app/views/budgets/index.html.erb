@@ -1,0 +1,27 @@
+<h1>Listing budgets</h1>
+
+<table>
+  <tr>
+    <th>Start date</th>
+    <th>End date</th>
+    <th>Amount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @budgets.each do |budget| %>
+  <tr>
+    <td><%= budget.start_date %></td>
+    <td><%= budget.end_date %></td>
+    <td><%= budget.amount %></td>
+    <td><%= link_to 'Show', budget %></td>
+    <td><%= link_to 'Edit', edit_budget_path(budget) %></td>
+    <td><%= link_to 'Destroy', budget, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Budget', new_budget_path %>
