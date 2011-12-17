@@ -14,4 +14,12 @@ class Envelope < ActiveRecord::Base
       errors.add(:budget, "assigned budget does not exist")
     end
   end
+  
+  def budget_amount
+    (budget_percent / 100.0) * budget.amount
+  end
+  
+  def amount_available
+    budget_amount + total
+  end
 end
