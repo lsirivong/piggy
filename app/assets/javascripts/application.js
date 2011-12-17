@@ -17,16 +17,6 @@ function submit_focus(formId) {
   }
 }
 
-function test_focus(selector) {
-  $(selector).first().trigger('focus');
-}
-
 function add_fields_to_edit_transaction(transaction_id, content) {
   $('#'+transaction_id).after(content);
-}
-
-function add_fields(link, association, content) {
-  var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g")
-  $(link).parent().before(content.replace(regexp, new_id));
 }
