@@ -18,6 +18,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'guard-test'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
