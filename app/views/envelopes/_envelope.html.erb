@@ -1,5 +1,6 @@
 <h3><%= link_to envelope.name, envelope %></h3>
-<h4><%= formatted_money envelope.amount_available %></h4><p> of <%= formatted_money envelope.budget_amount %></p>
+<h4 class="available"><%= formatted_money(envelope.amount_available) %></h4>
+<p> of <%= formatted_money envelope.budget_amount %></p>
 <div class="transaction_entry clearfix">
 <%= form_for(envelope, :remote => true) do |f| %>
   <%= f.fields_for(:transactions, Transaction.new ) do |builder| %>

@@ -1,7 +1,7 @@
 // 1. add the new item to the beginning of the list
-if ($('#<%= dom_id(@envelope) + " .transactions" %>').length)
+if ($('#<%= "#{dom_id(@envelope)} .transactions" %>').length)
 {
-  $('#<%= "envelope_#{@envelope.id} .transactions" %>')
+  $('#<%= "#{dom_id(@envelope)} .transactions" %>')
     .prepend("<%= escape_javascript(render(@envelope.transactions.last)) %>")
     // 2. get the first li and animate it open
     .children('li').first().css('display', 'none')
@@ -14,5 +14,8 @@ if ($('#<%= dom_id(@envelope) + " .transactions" %>').length)
 }
 
 // clear inputs and set focus to first input field of the modified envelope
-$('#<%= "envelope_#{@envelope.id} .fields input" %>').val('')
+$('#<%= "#{dom_id @envelope} .fields input" %>').val('')
   .first().trigger('focus');
+
+// recalculate envelope total
+$('#<%= "#{dom_id @envelope} .available" %>').html('<%= "#{formatted_money @envelope.amount_available}" %>');
