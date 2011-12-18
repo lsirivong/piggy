@@ -1,1 +1,4 @@
 $('#<%= dom_id @transaction %>').replaceWith('<%= escape_javascript(render(@transaction)) %>');
+
+// recalculate envelope total
+$('#<%= "#{dom_id @transaction.envelope} .available" %>').html('<%= "#{formatted_money @transaction.envelope.amount_available}" %>');
