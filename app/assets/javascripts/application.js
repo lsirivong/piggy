@@ -19,4 +19,5 @@ function submit_focus(formId) {
 
 function add_fields_to_edit_transaction(transaction_id, content) {
   $('#'+transaction_id).replaceWith(content);
+  $('#'+transaction_id + " .fields input").first().trigger('focus');
 }
