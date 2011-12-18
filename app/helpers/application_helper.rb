@@ -11,6 +11,7 @@ module ApplicationHelper
     fields = form_for(transaction, :remote => true) do |f|
       output = render("envelopes/transaction_fields", :f => f)
       output << f.submit
+      output << link_to('Cancel', transaction, :remote => true)
     end
 
     li = content_tag(:li, fields, :id => dom_id(transaction))
