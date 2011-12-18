@@ -11,9 +11,10 @@ module ApplicationHelper
     fields = form_for(transaction, :remote => true) do |f|
       output = render("envelopes/transaction_fields", :f => f)
       output << f.submit
-      output
     end
 
-    link_to_function(name, "add_fields_to_edit_transaction('#{dom_id(transaction)}', '<li>#{escape_javascript(fields)}</li>')")
+    li = content_tag(:li, fields, :id => dom_id(transaction))
+
+    link_to_function(name, "add_fields_to_edit_transaction('#{dom_id(transaction)}', '#{j(li)}')")
   end
 end

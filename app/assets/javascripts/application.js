@@ -18,5 +18,5 @@ function submit_focus(formId) {
 }
 
 function add_fields_to_edit_transaction(transaction_id, content) {
-  $('#'+transaction_id).after(content);
+  $('#'+transaction_id).replaceWith(content);
 }
