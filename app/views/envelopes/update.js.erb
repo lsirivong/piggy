@@ -17,5 +17,4 @@ if ($('#<%= "#{dom_id(@envelope)} .transactions" %>').length)
 $('#<%= "#{dom_id @envelope} .fields input" %>').val('')
   .first().trigger('focus');
 
-// recalculate envelope total
-$('#<%= "#{dom_id @envelope} .available" %>').html('<%= "#{formatted_money @envelope.amount_available}" %>');
+<%= recalculate_envelope(@envelope) %>

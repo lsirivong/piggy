@@ -18,4 +18,8 @@ module ApplicationHelper
 
     link_to_function(name, "add_fields_to_edit_transaction('#{dom_id(transaction)}', '#{escape_javascript(li)}')")
   end
+  
+  def recalculate_envelope(envelope)
+    "$('##{dom_id envelope} .available').html('#{formatted_money envelope.amount_available}');"
+  end
 end

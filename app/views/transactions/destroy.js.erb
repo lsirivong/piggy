@@ -1,4 +1,3 @@
 $('#<%= dom_id @transaction %>').remove()
 
-// recalculate envelope total
-$('#<%= "#{dom_id @transaction.envelope} .available" %>').html('<%= "#{formatted_money @transaction.envelope.amount_available}" %>');
+<%= recalculate_envelope(@transaction.envelope) %>
