@@ -19,6 +19,9 @@ end
 gem 'jquery-rails'
 
 gem 'guard-test'
+gem 'rb-fsevent'
+# for guard growl notifications
+gem 'growl_notify'
 
 # Use unicorn as the web server
 # gem 'unicorn'
