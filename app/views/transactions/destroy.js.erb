@@ -1,3 +1,5 @@
-$('#<%= dom_id @transaction %>').remove()
+$('#<%= dom_id @transaction %>').slideUp(350, function() {
+   $('#<%= dom_id @transaction %>').remove()
+   });
 
 <%= recalculate_envelope(@transaction.envelope) %>
