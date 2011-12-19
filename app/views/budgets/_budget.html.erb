@@ -3,7 +3,7 @@
 <div class="envelopes">
   <h2>Envelopes</h2>
   <% budget.envelopes.each do |e| %>
-    <div class="envelope" id=<%= "envelope_#{e.id}" %>>
+    <div class="envelope" id="<%= dom_id e %>">
       <%= render e %>
     </div>
   <% end %>

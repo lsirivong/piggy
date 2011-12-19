@@ -59,9 +59,18 @@ class EnvelopesController < ApplicationController
   # PUT /envelopes/1.json
   def update
     @envelope = Envelope.find(params[:id])
+    
+    # Prevent multiple submits of the same form
+    @submit
+    unless params[:time].nil?
+      form_time = Time.parse(params[:time])
+      @submit = Submit.find_by_time(form_time)
+    end
 
     respond_to do |format|
-      if @envelope.update_attributes(params[:envelope])
+      if @submit.nil? && @envelope.update_attributes(params[:envelope])
+        @submit = Submit.new(:time => form_time)
+        @submit.save!
         format.html { redirect_to @envelope, notice: 'Envelope was successfully updated.' }
         format.js
         format.json { head :ok }

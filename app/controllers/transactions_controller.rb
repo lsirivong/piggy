@@ -17,6 +17,7 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.js
       format.json { render json: @transaction }
     end
   end
@@ -59,8 +60,9 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
 
     respond_to do |format|
-      if @transaction.update_attributes(params[:transaction])
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully updated.' }
+      if @transaction.update_attributes!(params[:transaction])
+        format.html { redirect_to :root, notice: 'Transaction was successfully updated.' }
+        format.js
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -76,7 +78,8 @@ class TransactionsController < ApplicationController
     @transaction.destroy
 
     respond_to do |format|
-      format.html { redirect_to transactions_url }
+      format.html { redirect_to :root }
+      format.js
       format.json { head :ok }
     end
   end

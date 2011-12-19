@@ -36,7 +36,7 @@ class TransactionsControllerTest < ActionController::TestCase
 
   test "should update transaction" do
     put :update, id: @transaction.to_param, transaction: @transaction.attributes
-    assert_redirected_to transaction_path(assigns(:transaction))
+    assert_redirected_to :root
   end
 
   test "should destroy transaction" do
@@ -44,6 +44,6 @@ class TransactionsControllerTest < ActionController::TestCase
       delete :destroy, id: @transaction.to_param
     end
 
-    assert_redirected_to transactions_path
+    assert_redirected_to :root
   end
 end
