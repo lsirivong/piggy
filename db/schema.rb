@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111216054953) do
+ActiveRecord::Schema.define(:version => 20111219014511) do
 
   create_table "budgets", :force => true do |t|
     t.date     "start_date"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(:version => 20111216054953) do
     t.string   "name"
     t.date     "deadline"
     t.decimal  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "submits", :force => true do |t|
+    t.datetime "time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

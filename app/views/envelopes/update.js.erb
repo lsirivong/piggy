@@ -13,8 +13,11 @@ if ($('#<%= "#{dom_id(@envelope)} .transactions" %>').length)
     );
 }
 
+// reset unique form id
+$('<%= "##{dom_id(@envelope)}_form_time" %>').val('<%= DateTime.now %>');
+
 // clear inputs and set focus to first input field of the modified envelope
-$('#<%= "#{dom_id @envelope} .fields input" %>').val('')
+$('<%= "##{dom_id @envelope} .fields input" %>').val('')
   .first().trigger('focus');
 
 <%= recalculate_envelope(@envelope) %>
