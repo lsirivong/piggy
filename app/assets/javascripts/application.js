@@ -21,3 +21,13 @@ function add_fields_to_edit_transaction(transaction_id, content) {
   $('#'+transaction_id).replaceWith(content);
   $('#'+transaction_id + " .fields input").first().trigger('focus');
 }
+
+function remove_wrapper(event) {
+  // replace with contents only
+  contents = $(this).contents();
+  $(this).replaceWith(contents);
+}
+
+$(document).ready ( function() {
+  $('.delete_link').bind('click', remove_wrapper);
+});

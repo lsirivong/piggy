@@ -13,6 +13,8 @@ if ($('#<%= "#{dom_id(@envelope)} .transactions" %>').length)
     );
 }
 
+$('.delete_link').bind('click', remove_wrapper);
+
 // reset unique form id
 $('<%= "##{dom_id(@envelope)}_form_time" %>').val('<%= DateTime.now %>');
 
