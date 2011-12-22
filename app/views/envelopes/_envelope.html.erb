@@ -10,7 +10,7 @@
   <%= hidden_field_tag :time, DateTime.now, :class => "form_id", :id => "#{dom_id(envelope)}_form_time" %>
   
   <div class="actions visuallyhidden">
-    <%= f.submit :onfocus => "submit_focus('edit_envelope_#{envelope.id}')"%>
+    <%= f.submit :onfocus => "submit_focus('edit_envelope_#{envelope.id}')", :disable_with => "Saving..."%>
   </div>
 <% end %>
 </div>
