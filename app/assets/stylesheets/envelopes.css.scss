@@ -8,13 +8,13 @@
   display: inline;
 }
 
-.field {
+.field.inline {
   float: left;
   height: 2.5em;
   position: relative;
   margin: 0;
 }
-.envelope input[type="text"] {
+.transaction_fields input[type="text"] {
     position: absolute;
     padding: 5px 6px;
     margin: 0;
@@ -27,17 +27,17 @@
     top: 4px;
     bottom: 4px;
 }
-.envelope .vendor {
+.transaction_fields .vendor {
     width: 80%;
 }
-.envelope .vendor input {
+.transaction_fields .vendor input {
     left: 4px;
     right: 2px;
 }
-.envelope .amount {
+.transaction_fields .amount {
     width: 20%;
 }
-.envelope .amount input {
+.transaction_fields .amount input {
     left: 2px;
     right: 4px;
 }

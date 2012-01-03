@@ -41,6 +41,11 @@ class BudgetsController < ApplicationController
   # POST /budgets.json
   def create
     @budget = Budget.new(params[:budget])
+    
+    # Because these use text fields, parse manually. This forces mm/dd/yy format, but we lose the
+    # flexibility of the built-in Date parser. The default assumed dd mm yy when entering xx/xx/xxxx
+    @budget.start_date = Date.strptime(params[:budget][:start_date], '%m/%d/%Y')
+    @budget.end_date = Date.strptime(params[:budget][:end_date], '%m/%d/%Y')
 
     respond_to do |format|
       if @budget.save
