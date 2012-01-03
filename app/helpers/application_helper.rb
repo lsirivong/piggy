@@ -3,10 +3,6 @@ module ApplicationHelper
     date.strftime("%b %d")
   end
   
-  def formatted_money value
-    format "$%#.2f", value
-  end
-  
   def link_to_edit_transaction(name, transaction)
     fields = form_for(transaction, :remote => true) do |f|
       output = render("envelopes/transaction_fields", :f => f)

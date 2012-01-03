@@ -1,5 +1,5 @@
 <div class="goal">
 <h3><%= link_to goal.name, goal %></h3>
-<h4><%= goal.total %> / <%= goal.amount %></h4>
+<h4><%= financial_format goal.total %> / <%= financial_format goal.amount %></h4>
 <%= render :partial => 'transactions/table', :locals => { :transactions => goal.transactions, :invert_transactions => true } %>
 </div>
