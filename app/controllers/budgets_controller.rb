@@ -49,7 +49,7 @@ class BudgetsController < ApplicationController
 
     respond_to do |format|
       if @budget.save
-        format.html { redirect_to @budget, notice: 'Budget was successfully created.' }
+        format.html { redirect_to :root, notice: 'Budget was successfully created.' }
         format.json { render json: @budget, status: :created, location: @budget }
       else
         format.html { render action: "new" }
