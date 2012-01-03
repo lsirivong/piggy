@@ -25,6 +25,9 @@ class BudgetsController < ApplicationController
   # GET /budgets/new.json
   def new
     @budget = Budget.new
+    # ugh, this is sloppy. This date format is littered all over...
+    @budget.start_date = Date.today.strftime('%m/%d/%Y')
+    @budget.end_date = (Date.today + 14).strftime('%m/%d/%Y') # 2 weeks
 
     respond_to do |format|
       format.html # new.html.erb
