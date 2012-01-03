@@ -16,6 +16,6 @@ module ApplicationHelper
   end
   
   def recalculate_envelope(envelope)
-    "$('##{dom_id envelope} .available').html('#{formatted_money envelope.amount_available}');"
+    "$('##{dom_id envelope} .available').html('#{financial_format envelope.amount_available}');"
   end
 end
