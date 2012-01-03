@@ -1,8 +1,9 @@
-<h2><%= formatted_date budget.start_date %> &ndash; <%= formatted_date budget.end_date %> (<%= financial_format budget.amount %>)</h2>
+<div class="budget clearfix">
+  <h2><%= formatted_date budget.start_date %> &ndash; <%= formatted_date budget.end_date %> (<%= financial_format budget.amount %>)</h2>
 
-<% budget.envelopes.each do |e| %>
-<div class="envelope" id="<%= dom_id e %>">
-  <%= render e %>
+  <% budget.envelopes.each do |e| %>
+  <div class="envelope" id="<%= dom_id e %>">
+    <%= render e %>
+  </div>
+  <% end %>
 </div>
-<% end %>
-
