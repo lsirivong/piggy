@@ -28,3 +28,31 @@
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1; }
+
+.ui-datepicker {
+    background: #fff;
+    border: 1px solid #aaa;
+}
+.ui-datepicker-prev {
+    float: left;
+}
+.ui-datepicker-next {
+    float: right;
+}
+.ui-datepicker-title {
+    clear: both;
+    text-align: center;
+}
+.ui-datepicker-calendar a {
+    display: inline-block;
+    text-align: right;
+    min-width: 1.8em;
+}
+.ui-datepicker-prev, .ui-datepicker-next {
+    margin: 1px 4px;
+    text-decoration: underline;
+}
+.ui-datepicker-prev:hover, .ui-datepicker-next:hover {
+    cursor: pointer;
+}
+
