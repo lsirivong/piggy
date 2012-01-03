@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :start_date %><br />
+  <div class="field" id="start">
+    <%= f.label :start_date, 'Start:' %><br />
     <%= f.text_field :start_date, :class => 'datepicker' %>
   </div>
-  <div class="field">
-    <%= f.label :end_date %><br />
+  <div class="field" id="end">
+    <%= f.label :end_date, 'End:' %><br />
     <%= f.text_field :end_date, :class => 'datepicker' %>
   </div>
   <div class="field">
-    <%= f.label :amount %><br />
-    <%= f.text_field :amount %>
+    <%= f.label :amount, 'How Much?' %><br />
+    $ <%= f.text_field :amount %>
   </div>
   
   <div class="actions">
