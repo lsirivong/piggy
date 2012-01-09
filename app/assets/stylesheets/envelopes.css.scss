@@ -15,31 +15,31 @@
   margin: 0;
 }
 .transaction_fields input[type="text"] {
-    position: absolute;
-    padding: 5px 6px;
-    margin: 0;
-    background-color: $transaction_input;
-    border: 1px solid $transaction_inset_dark;
-    border-bottom-color: $transaction_inset_light;
-    border-right-color: $transaction_inset_light;
-    font-family: 'Courier New';
-    font-size: 100%;
-    top: 4px;
-    bottom: 4px;
+  position: absolute;
+  padding: 5px 6px;
+  margin: 0;
+  background-color: $transaction_input;
+  border: 1px solid $transaction_inset_dark;
+  border-bottom-color: $transaction_inset_light;
+  border-right-color: $transaction_inset_light;
+  font-family: 'Courier New';
+  font-size: 100%;
+  top: 4px;
+  bottom: 4px;
 }
 .transaction_fields .vendor {
-    width: 80%;
+  width: 80%;
 }
 .transaction_fields .vendor input {
-    left: 4px;
-    right: 2px;
+  left: 4px;
+  right: 2px;
 }
 .transaction_fields .amount {
-    width: 20%;
+  width: 20%;
 }
 .transaction_fields .amount input {
-    left: 2px;
-    right: 4px;
+  left: 2px;
+  right: 4px;
 }
 
 .desc, .actions, .fields {
