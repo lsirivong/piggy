@@ -4,5 +4,5 @@
 
 # Initialization
 $ ->
-  $('.datepicker').datepicker({dateFormat : 'mm/dd/yy'});
+  $('.datepicker').datepicker({dateFormat : 'yy-mm-dd'}); # ie '2012-01-30'
   $('.ui-datepicker').hide();
