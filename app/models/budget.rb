@@ -1,6 +1,6 @@
 class Budget < ActiveRecord::Base
   has_many :envelopes, :dependent => :destroy
-  has_many :transactions, :through => :envelopes
+  has_many :transactions, :through => :envelopes, :order => 'date DESC, created_at DESC'
   validates :start_date, :presence => true
   validates :end_date, :presence => true
   validate :end_must_be_after_start
