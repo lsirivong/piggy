@@ -24,11 +24,13 @@ class BudgetsController < ApplicationController
   # GET /budgets/new
   # GET /budgets/new.json
   def new
-    @budget = Budget.new
-    # ugh, this is sloppy. This date format is littered all over...
-    @budget.start_date = Date.today.strftime('%m/%d/%Y')
-    @budget.end_date = (Date.today + 14).strftime('%m/%d/%Y') # 2 weeks
-
+    today = Date.today
+    @budget = Budget.new(:amount => 0, :start_date => today, :end_date => (today + 14)) # 2 weeks
+    
+    @budget.envelopes << Envelope.new(:name => 'Needs', :budget_percent => 50, :budget => @budget )
+    @budget.envelopes << Envelope.new(:name => 'Wants', :budget_percent => 30, :budget => @budget )
+    @budget.envelopes << Envelope.new(:name => 'Savings', :budget_percent => 20, :budget => @budget )
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @budget }

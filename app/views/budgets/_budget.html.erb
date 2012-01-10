@@ -1,7 +1,6 @@
 <div class="budget clearfix" id="<%= "#{dom_id(budget)}" %>">
   <h2><%= formatted_date budget.start_date %> &ndash; <%= formatted_date budget.end_date %> (<%= financial_format budget.amount %>)</h2>
   
-  
   <div class="transaction_entry clearfix">
     <%= transaction_form budget.envelopes.first.id %>
   </div>

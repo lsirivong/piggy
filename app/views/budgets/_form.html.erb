@@ -23,6 +23,18 @@
     <%= f.label :amount, 'How Much?' %><br />
     $ <%= f.text_field :amount %>
   </div>
+  <h3>Split it up</h3>
+
+  <%= f.fields_for :envelopes do |builder| %>
+    <div>
+      <%= builder.label :name %><br />
+      <%= builder.text_field :name %>
+    </div>
+    <div>
+      <%= builder.label :budget_percent %><br />
+      <%= builder.text_field :budget_percent %>
+    </div>
+  <% end %>
   
   <div class="actions">
     <%= f.submit %>
