@@ -46,6 +46,8 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
+        @envelope = @transaction.envelope
+        format.js
         format.json { render json: @transaction, status: :created, location: @transaction }
       else
         format.html { render action: "new" }
