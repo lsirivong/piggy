@@ -16,23 +16,5 @@ class EnvelopeTest < ActiveSupport::TestCase
     assert drinks.save!
     
     assert e.total == lunch.amount + dinner.amount + drinks.amount
-    
-  end
-  
-  test "budget must not be nil" do
-    e = envelopes(:one)
-    assert e.valid?
-    
-    e.budget = nil
-    assert e.invalid?
-  end
-  
-  test "budget must exist" do
-    e = envelopes(:one)
-    assert e.valid?
-    
-    e.budget_id = 0
-    assert e.invalid?
-    assert e.errors[:budget].any?
   end
 end

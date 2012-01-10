@@ -1,0 +1,28 @@
+// 1. add the new item to the beginning of the list
+var budget_selector = '#<%= "#{dom_id(@transaction.budget)}" unless @transaction.budget.nil? %>'
+var transaction_list_selector = budget_selector + ' .transactions';
+
+if ($(transaction_list_selector).length)
+{
+  $(transaction_list_selector)
+    .prepend("<%= escape_javascript(render(@transaction)) %>")
+    // 2. get the first li and animate it open
+    .children('li').first().css('display', 'none')
+    .animate(
+      { height: 'toggle' },
+       350, function() {
+         // Animation complete.
+      }
+    );
+}
+
+$('.delete_link').bind('click', remove_wrapper);
+
+// reset unique form id
+$('#transaction_form_time').val('<%= DateTime.now %>');
+
+// clear inputs and set focus to first input field of the modified envelope
+$(budget_selector + ' .transaction_fields input').val('')
+  .first().trigger('focus');
+
+<%= recalculate_envelope(@transaction.envelope) %>

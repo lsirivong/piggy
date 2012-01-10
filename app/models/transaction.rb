@@ -12,6 +12,15 @@ class Transaction < ActiveRecord::Base
   belongs_to :envelope
   belongs_to :goal
   
+  def budget
+    unless envelope.nil?
+      envelope.budget
+    else
+      # no envelope, no budget.
+      nil
+    end
+  end
+  
   def envelope_must_exist_if_given
     if !envelope_id.nil? && envelope.nil?
       errors.add(:envelope, "assigned envelope does not exist")

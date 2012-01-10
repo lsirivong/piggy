@@ -1,16 +1,8 @@
 <h3><%= link_to envelope.name, envelope %></h3>
-<h4 class="available"><%= financial_format envelope.amount_available %> / <%= financial_format envelope.budget_amount %></h4>
+<h4 class="available" id="<%= "#{dom_id(envelope)}_available" %>"><%= financial_format envelope.amount_available %> / <%= financial_format envelope.budget_amount %></h4>
+
 <div class="transaction_entry clearfix">
-<%= form_for(envelope, :remote => true) do |f| %>
-  <%= f.fields_for(:transactions, Transaction.new ) do |builder| %>
-    <%= render("envelopes/transaction_fields", :f => builder) %>
-  <% end %>
-  
-  <%= hidden_field_tag :time, DateTime.now, :class => "form_id", :id => "#{dom_id(envelope)}_form_time" %>
-  
-  <div class="actions visuallyhidden">
-    <%= f.submit :onfocus => "submit_focus('edit_envelope_#{envelope.id}')", :disable_with => "Saving..."%>
-  </div>
-<% end %>
+  <%= transaction_form envelope.id %>
 </div>
-<%= render :partial => 'transactions/table', :locals => { :transactions => envelope.transactions.reverse } %>
+
+<%= transaction_list envelope.transactions.reverse %>

@@ -1,4 +1,4 @@
-<li id="<%= dom_id transaction %>" >
+<li id="<%= dom_id transaction %>" >  
   <%= transaction.vendor %>
   
   <% invert_transaction = false if local_assigns[:invert_transaction].nil? %>
@@ -7,6 +7,7 @@
   
   <section class="metadata">
     <%= link_to transaction.date, transaction %> |
+    <%= "#{transaction.envelope.name} | " unless transaction.envelope.nil? %>
     <%= link_to_edit_transaction("Edit", transaction) %> |
     <% unless transaction.goal.nil? %>
       <%= link_to transaction.goal.name, transaction.goal %>

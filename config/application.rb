@@ -44,8 +44,5 @@ module Piggy
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    
-    # Configure observers
-    config.active_record.observers = :budget_observer
   end
 end

@@ -21,7 +21,7 @@ class BudgetsControllerTest < ActionController::TestCase
       post :create, budget: @budget.attributes
     end
 
-    assert_redirected_to budget_path(assigns(:budget))
+    assert_redirected_to :root
   end
 
   test "should show budget" do
