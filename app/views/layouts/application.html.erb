@@ -7,8 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>
+	<h1><%= link_to "Welcome to Piggy", :root %></h1>
+</header>
+<div class="main">
+	<%= yield %>
 
-<%= yield %>
-
+	<% if @goals %>
+	<div class="goals">
+	  <%= link_to "New Goal", new_goal_path %>
+	  <%= render @goals %>
+	</div>
+	<% end %>
+</div>
 </body>
 </html>

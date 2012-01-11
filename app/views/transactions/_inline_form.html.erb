@@ -1,7 +1,7 @@
 <%= form_for(inline_form, :remote => true) do |f| %>
   <div class="transaction_fields fields">
     <div class="field inline envelope">
-      <%= f.collection_select(:envelope_id, Envelope.where(:budget_id => inline_form.budget.id), :id, :name ) %>
+      <%= f.collection_select(:envelope_id, inline_form.budgets, :id, :name ) %>
     </div>
     <div class="field inline vendor">
       <%= f.text_field :vendor %>
@@ -16,7 +16,9 @@
   </div>
   
   <%= hidden_field_tag(:time, DateTime.now, :class => "form_id", :id => "transaction_form_time") %>
-  <div class="actions visuallyhidden">
+  <div class="actions <%= "visuallyhidden" unless show_actions %>">
+    
+    <%= link_to('Cancel', inline_form, :remote => true) %>
     <%= f.submit(:onfocus => "submit_focus('new_transaction')", :disable_with => "Saving...") %>
   </div>
 <% end %>

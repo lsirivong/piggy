@@ -14,6 +14,7 @@ class BudgetsController < ApplicationController
   # GET /budgets/1.json
   def show
     @budget = Budget.find(params[:id])
+    @goals = Goal.all
 
     respond_to do |format|
       format.html # show.html.erb

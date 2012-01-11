@@ -12,4 +12,12 @@ class Budget < ActiveRecord::Base
       errors.add(:end_date, "must be after start date")
     end
   end
+  
+  def previous_budget
+    self.class.first(:conditions => ["created_at < ?", created_at], :order => "created_at desc")
+  end
+
+  def next_budget
+    self.class.first(:conditions => ["created_at > ?", created_at], :order => "created_at asc")
+  end
 end

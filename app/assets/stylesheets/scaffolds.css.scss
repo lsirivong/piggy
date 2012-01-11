@@ -1,9 +1,14 @@
 body {
   background-color: #fff;
+  margin: 0;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px; }
+  
+.main {
+  margin: 0 10px;
+}
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -50,3 +55,12 @@ a {
   ul li {
     font-size: 12px;
     list-style: square; } }
+
+h1, h1 a, h1 a:visited {
+    margin: 0;
+    padding: 10px 20px 0;
+    background: #000;
+    line-height: 1.5;
+    color: #fafafa;
+    text-decoration: none;
+}
