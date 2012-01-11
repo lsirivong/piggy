@@ -3,7 +3,7 @@ Piggy::Application.routes.draw do
 
   resources :goals
 
-  get "dashboard/show"
+  resources :dashboards, :only => [:show]
 
   resources :envelopes
 

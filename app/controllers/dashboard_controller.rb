@@ -1,7 +1,6 @@
 class DashboardController < ApplicationController
   def show
-    @budgets = Budget.order("created_at DESC").limit(5)
-    @goals = Goal.all
+    redirect_to Budget.order("created_at DESC").first
   end
 
 end

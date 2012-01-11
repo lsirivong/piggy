@@ -21,6 +21,14 @@ class Transaction < ActiveRecord::Base
     end
   end
   
+  def budgets
+    unless budget.nil?
+      Envelope.where(:budget_id => budget.id)
+    else
+      Envelope.all
+    end
+  end
+  
   def envelope_must_exist_if_given
     if !envelope_id.nil? && envelope.nil?
       errors.add(:envelope, "assigned envelope does not exist")

@@ -15,9 +15,17 @@ module TransactionsHelper
     render :partial => 'transactions/table', :locals => { :transactions => transactions }
   end
   
-  def transaction_form(envelope_id)
-    transaction = Transaction.new
-    transaction.envelope_id = envelope_id # may want to validate envelope_id here.
-    render :partial => 'transactions/inline_form', :object => transaction
+  def transaction_form(transaction, options={} )
+    defaults = {
+      :show_actions => false,
+    }
+    options = defaults.merge(options)
+    
+    render(:partial => 'transactions/inline_form', :object => transaction, :locals => { :show_actions => options[:show_actions] })
+  end
+  
+  def transaction_form_for_envelope_id(envelope_id)
+    transaction = Transaction.new(:envelope_id => envelope_id)
+    content_tag(:div, transaction_form(transaction), :class => "transaction_entry clearfix")
   end
 end
