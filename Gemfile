@@ -5,8 +5,13 @@ gem 'rails', '3.1.0'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :development, :test do
+  gem 'sqlite3'
+end
 
+group :production do
+  gem 'ps'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -17,11 +22,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-gem 'guard-test'
-gem 'rb-fsevent'
-# for guard growl notifications
-gem 'growl_notify'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -37,3 +37,5 @@ group :test do
   gem 'turn', :require => false
 	gem 'minitest'
 end
+
+gem 'whenever', :require => false
