@@ -9,12 +9,12 @@
   margin: 0;
   padding: 6px;
   padding-left: 33px;
-}
-.transactions li {
-  border-top: 1px solid;
-}
-.transactions li:first-child {
-  border-top: none;
+  li {
+    border-top: 1px solid;
+    &:first-child {
+      border-top: none;
+    }
+  }
 }
 .transaction_entry {
     background-color: $transaction_background;
@@ -24,6 +24,53 @@
 .transactions, .transactions li, .transaction_entry {
   border-color: $transaction_border;
 }
+.transaction_fields {
+  input[type="text"], select {
+    position: absolute;
+    padding: 5px 6px;
+    margin: 0;
+    font-family: 'Courier New';
+    font-size: 100%;
+    top: 4px;
+    bottom: 4px;
+  }
+  input[type="text"] {
+    background-color: $transaction_input;
+    border: 1px solid $transaction_inset_dark;
+    border-bottom-color: $transaction_inset_light;
+    border-right-color: $transaction_inset_light;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -ie-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    &:focus {
+      background-color: #fefefe;
+    }
+  }
+  .envelope {
+    width: 20%;
+    select {
+      left: 4px;
+      right: 2px;
+    }
+  }
+  .vendor {
+    width: 60%;
+    input {
+      left: 4px;
+      right: 2px;
+    }
+  }
+  .amount {
+    width: 20%;
+    input {
+      left: 2px;
+      right: 4px;
+    }
+  }
+}
+
 .amount {
   float: right;
   clear: right;

@@ -1,7 +1,7 @@
 <%= form_for(@budget) do |f| %>
   <% if @budget.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@budget.errors.count, "error") %> prohibited this budget from being saved:</h2>
+      <h3><%= pluralize(@budget.errors.count, "error") %> prohibited this budget from being saved:</h3>
 
       <ul>
       <% @budget.errors.full_messages.each do |msg| %>
@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <h3>When?</h3>
+  <h4>When?</h4>
   <div class="field" id="start">
     <%= f.label :start_date, 'Start:' %><br />
     <%= f.text_field :start_date, :class => 'datepicker' %>
@@ -21,17 +21,17 @@
     <%= f.text_field :end_date, :class => 'datepicker' %>
   </div>
   
-  <h3>How Much?</h3>
-  <div class="field">
-    <%= f.label :amount, 'How Much?' %><br />
-    $ <%= f.text_field :amount %>
+  <h4>How Much?</h4>
+  <div class="field" id="budget_amount_fields">
+    <%= f.label :amount, '$' %> <%= f.text_field :amount, :size => 5 %>
   </div>
   
-  <h3>Split it up</h3>
+  <h4>Split it up</h4>
   <%= f.fields_for :envelopes do |builder| %>
     <div class="envelope_percent_field">
       <%= builder.object.name %>:<br />
-      <%= builder.text_field :budget_percent %>
+      <%= builder.hidden_field :name %>
+      <%= builder.text_field :budget_percent, :size => 3 %>% 
     </div>
   <% end %>
   

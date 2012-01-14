@@ -25,6 +25,8 @@ class BudgetsController < ApplicationController
   # GET /budgets/new
   # GET /budgets/new.json
   def new
+    session[:no_budgets_found] = Budget.count <= 0
+    
     today = Date.today
     @budget = Budget.new(:amount => 0, :start_date => today, :end_date => (today + 14)) # 2 weeks
     
