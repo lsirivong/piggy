@@ -18,6 +18,9 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+set :output, "#{path}/log/cron.log"
+
 every 2.hours do
   runner "Budget.destroy_all"
   runner "Submit.destroy_all"
