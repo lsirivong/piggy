@@ -1,5 +1,8 @@
-<h1>New budget</h1>
+<% if session[:no_budgets_found] && session[:no_budgets_found] == true %>
+<div id="notice-wrap">
+  <p>It looks like you haven't created any budgets yet. Use this form to set up your first budget to get started using Piggy.</p>
+</div>
+<% end %>
+<h2>New budget</h2>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', budgets_path %>
