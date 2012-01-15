@@ -38,6 +38,6 @@ class BudgetsControllerTest < ActionController::TestCase
       delete :destroy, id: @budget.to_param
     end
 
-    assert_redirected_to budgets_path
+    assert_redirected_to :root
   end
 end
