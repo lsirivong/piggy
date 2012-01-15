@@ -11,7 +11,7 @@
       <div class="stat_wrap remaining" id="budget_remaining"><i class="value"><%= financial_format budget.remaining %></i> Remaining</div>
       <div class="stat_wrap spent" id="budget_spent">
         <i class="value"><%= financial_format budget.spent.abs %></i> Spent
-        <div class="amount_over_wrap<%= " hidden" unless budget.spent_too_much %>"><br />(<i class="amount_over"><%= "#{financial_format budget.amount_over}" %></i> over budget)</div>
+        <div class="amount_over_wrap<%= " hidden" unless budget.spent_too_much %>">(<i class="amount_over"><%= "#{financial_format budget.amount_over}" %></i> over budget)</div>
       </div>
       
     </div>
@@ -21,7 +21,10 @@
       <div class="stats envelope-stats" id="<%= "#{dom_id(e)}" %>">
         <p><b><%= e.name %></b></p>
         <div class="stat_wrap remaining"><i class="value"><%= financial_format e.remaining.abs %></i> Remaining</div>
-        <div class="stat_wrap spent"><i class="value"><%= financial_format e.spent.abs %></i> Spent</div>
+        <div class="stat_wrap spent">
+          <i class="value"><%= financial_format e.spent.abs %></i> Spent
+          <div class="amount_over_wrap<%= " hidden" unless e.spent_too_much %>">(<i class="amount_over"><%= "#{financial_format e.amount_over}" %></i> over)</div>
+        </div>
       </div>
     <% end %>
     </div>

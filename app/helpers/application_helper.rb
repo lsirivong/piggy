@@ -50,6 +50,16 @@ module ApplicationHelper
     
     out << animate % ["##{dom_id envelope} .remaining .value", "#{financial_format envelope.remaining.abs}"]
     out << animate % ["##{dom_id envelope} .spent .value", "#{financial_format envelope.spent.abs}"]
+  
+  
+    out << animate % ["##{dom_id envelope} .spent .amount_over", "#{financial_format envelope.amount_over}"]
+    
+    if envelope.spent_too_much
+      out << "if ($('##{dom_id envelope} .spent .amount_over_wrap').is('.hidden')) { $('##{dom_id envelope} .spent .amount_over_wrap').removeClass('hidden')}"
+    else
+      out << "if (!$('##{dom_id envelope} .spent .amount_over_wrap').is('.hidden')) { $('##{dom_id envelope} .spent .amount_over_wrap').addClass('hidden')}"
+    end
+    
     goal = transaction.goal
     unless goal.nil?
       out << animate % ["##{dom_id goal} .saved .value", "#{financial_format goal.total}"]
