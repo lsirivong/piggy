@@ -5,12 +5,6 @@ class EnvelopesControllerTest < ActionController::TestCase
     @envelope = envelopes(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:envelopes)
-  end
-
   test "should get new" do
     get :new
     assert_response :success
@@ -44,6 +38,6 @@ class EnvelopesControllerTest < ActionController::TestCase
       delete :destroy, id: @envelope.to_param
     end
 
-    assert_redirected_to envelopes_path
+    assert_redirected_to :root
   end
 end

@@ -5,7 +5,7 @@ Piggy::Application.routes.draw do
 
   resources :dashboards, :only => [:show]
 
-  resources :envelopes
+  resources :envelopes, :except => [:index]
 
   resources :transactions
 

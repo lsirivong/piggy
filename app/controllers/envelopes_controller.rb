@@ -1,15 +1,4 @@
 class EnvelopesController < ApplicationController
-  # GET /envelopes
-  # GET /envelopes.json
-  def index
-    @envelopes = Envelope.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @envelopes }
-    end
-  end
-
   # GET /envelopes/1
   # GET /envelopes/1.json
   def show
@@ -88,7 +77,7 @@ class EnvelopesController < ApplicationController
     @envelope.destroy
 
     respond_to do |format|
-      format.html { redirect_to envelopes_url }
+      format.html { redirect_to :root }
       format.json { head :ok }
     end
   end
