@@ -30,3 +30,4 @@ Piggy is currently only capable of very trivial tracking of spending and saving.
 
 * When moving an entry from the spending list to a different category, the previous category's stats will not update.
 * Budgets may be allocated into chunks that don't add up to 100%
+* When more than budget or category is spent, the stats don't make sense.
