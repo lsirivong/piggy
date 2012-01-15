@@ -26,7 +26,7 @@ Piggy is currently only capable of very trivial tracking of spending and saving.
 * Provide automation for goals, if I know I have to pay the same amount of rent on the first of every month Piggy should handle the details for me.
 * Visualize spending during a budget to help understand where you're spending the most money.
 
-## Known issues:
+## Known issues
 
 * When moving an entry from the spending list to a different category, the previous category's stats will not update.
 * Budgets may be allocated into chunks that don't add up to 100%

@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-  	<h1><%= link_to "Piggy", :root %> <i>50/30/20 money management</i></h1>
+  	<h1><%= link_to "Piggy", :root %><i>50/30/20 money management</i></h1>
   </header>
   <div class="main">
   	<%= yield %>
@@ -29,5 +29,9 @@
     	<% end %>
   	</div>
   </div>
+  <footer>
+    <%= link_to "About Piggy", "https://github.com/lsirivong/piggy#readme", :target => "_blank" %><br />
+    <%= link_to "Made by Lenny Sirivong", "http://lenny-s.com", :target => "_blank" %>
+  </footer>
 </body>
 </html>

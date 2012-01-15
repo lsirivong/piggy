@@ -18,6 +18,15 @@ body {
   max-width: 1200px;
 }
 
+footer {
+  padding-top: 3em;
+  text-align: center;
+  clear: both;
+  &, a {
+    color: rgba(0, 0, 0, .4);
+  }
+}
+
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif; }
 
