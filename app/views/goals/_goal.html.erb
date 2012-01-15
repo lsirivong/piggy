@@ -1,5 +1,6 @@
 <div class="goal" id="<%= dom_id goal %>">
   <h3><%= goal.name %></h3>
-  <div class="saved"><i><%= financial_format goal.total %></i> Saved</div>
-  <div class="remaining"><i><%= financial_format goal.remaining %></i> Remaining</div>
+  <div class="stat saved"><i><%= financial_format goal.total %></i> Saved</div>
+  <div class="stat remaining"><i><%= financial_format goal.remaining %></i> Remaining</div>
+  <div class="actions"><%= link_to 'Delete', goal, confirm: "Delete goal \"#{goal.name}\"?", method: :delete,  %></div>
 </div>
