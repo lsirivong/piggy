@@ -15,6 +15,31 @@ module ApplicationHelper
     "$('##{dom_id envelope}_available').html('#{financial_format envelope.amount_available}');"
   end
   
+  def recalculate_stats(envelope)
+    animation_after = "
+    .animate(
+      { opacity: 1 },
+       350, function() {
+         // Animation complete.
+      }
+    )"
+    animate = "$('%s').animate(
+      { opacity: 0 },
+       350, function() {
+         $(this).html('%s').animate(
+           { opacity: 1 },
+           350, function() {
+             // Animation complete.
+           }
+        );
+      }
+    );"
+    out = animate % ["#budget_remaining i", "#{financial_format envelope.budget.remaining.abs}"]
+    out << animate % ["#budget_spent i", "#{financial_format envelope.budget.spent.abs}"]
+    out << animate % ["##{dom_id envelope} .remaining i", "#{financial_format envelope.remaining.abs}"]
+    out << animate % ["##{dom_id envelope} .spent i", "#{financial_format envelope.spent.abs}"]
+  end
+  
   def link_to_unless_nil(text, object)
     link_to(text, object) unless object.nil?
   end

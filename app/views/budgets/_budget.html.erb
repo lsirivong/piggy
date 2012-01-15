@@ -8,13 +8,13 @@
   
   <div class="stats-wrap">
     <div class="stats budget-stats clearfix">
-      <div class="remaining"><i><%= financial_format budget.remaining.abs %></i> Remaining</div>
-      <div class="spent"><i><%= financial_format budget.spent.abs %></i> Spent</div>
+      <div class="remaining" id="budget_remaining"><i><%= financial_format budget.remaining.abs %></i> Remaining</div>
+      <div class="spent" id="budget_spent"><i><%= financial_format budget.spent.abs %></i> Spent</div>
     </div>
   
     <div class="envelope-stats-wrap clearfix">
     <% budget.envelopes.each do |e| %>
-      <div class="stats envelope-stats">
+      <div class="stats envelope-stats" id="<%= "#{dom_id(e)}" %>">
         <p><b><%= e.name %></b></p>
         <div class="remaining"><i><%= financial_format e.remaining.abs %></i> Remaining</div>
         <div class="spent"><i><%= financial_format e.spent.abs %></i> Spent</div>

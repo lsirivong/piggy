@@ -1,4 +1,4 @@
-<% unless transactions.nil? %>
+<% unless transactions.nil? || transactions.count <= 0 %>
 <ol class="transactions">  
   <% invert_transactions = false if local_assigns[:invert_transactions].nil? %>
   <%= render :partial => transactions, :locals => { :invert_transaction => invert_transactions } %>
