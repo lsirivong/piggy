@@ -19,7 +19,7 @@ h2 {
 .stats {
   font-size: 1em;
   margin: 18px 0;
-  div {
+  .stat_wrap {
     width: 42%;
     padding: 0 4%;
     text-align: right;
@@ -29,16 +29,19 @@ h2 {
     text-align: center;
     margin: 0;
   }
-  i {
+  .value {
     font-style: normal;
     display: block;
   }
 }
 .budget-stats {
-  i {
+  .value {
     font-weight: bold;
     font-size: 3em;
     line-height: 1.1;
+  }
+  .amount_over {
+    font-style: normal;
   }
   .remaining {
     color: $positive;

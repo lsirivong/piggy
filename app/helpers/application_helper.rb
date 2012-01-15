@@ -35,14 +35,25 @@ module ApplicationHelper
         );
       }
     );"
-    out = animate % ["#budget_remaining i", "#{financial_format envelope.budget.remaining.abs}"]
-    out << animate % ["#budget_spent i", "#{financial_format envelope.budget.spent.abs}"]
-    out << animate % ["##{dom_id envelope} .remaining i", "#{financial_format envelope.remaining.abs}"]
-    out << animate % ["##{dom_id envelope} .spent i", "#{financial_format envelope.spent.abs}"]
+    
+    budget = envelope.budget
+    out = animate % ["#budget_remaining .value", "#{financial_format budget.remaining}"]
+    out << animate % ["#budget_spent .value", "#{financial_format budget.spent.abs}"]
+  
+    if budget.spent_too_much
+      out << "if ($('#budget_spent .amount_over_wrap').is('.hidden')) { $('#budget_spent .amount_over_wrap').removeClass('hidden')}"
+    else
+      out << "if (!$('#budget_spent .amount_over_wrap').is('.hidden')) { $('#budget_spent .amount_over_wrap').addClass('hidden')}"
+    end
+    
+    out << animate % ["#budget_spent .amount_over", "#{financial_format budget.amount_over}"]
+    
+    out << animate % ["##{dom_id envelope} .remaining .value", "#{financial_format envelope.remaining.abs}"]
+    out << animate % ["##{dom_id envelope} .spent .value", "#{financial_format envelope.spent.abs}"]
     goal = transaction.goal
     unless goal.nil?
-      out << animate % ["##{dom_id goal} .saved i", "#{financial_format goal.total}"]
-      out << animate % ["##{dom_id goal} .remaining i", "#{financial_format goal.remaining}"]
+      out << animate % ["##{dom_id goal} .saved .value", "#{financial_format goal.total}"]
+      out << animate % ["##{dom_id goal} .remaining .value", "#{financial_format goal.remaining}"]
     end
     
     return out
