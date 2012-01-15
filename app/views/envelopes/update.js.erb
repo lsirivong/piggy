@@ -1,0 +1,25 @@
+// 1. add the new item to the beginning of the list
+if ($('#<%= "#{dom_id(@envelope)} .transactions" %>').length)
+{
+  $('#<%= "#{dom_id(@envelope)} .transactions" %>')
+    .prepend("<%= escape_javascript(render(@envelope.transactions.last)) %>")
+    // 2. get the first li and animate it open
+    .children('li').first().css('display', 'none')
+    .animate(
+      { height: 'toggle' },
+       350, function() {
+         // Animation complete.
+      }
+    );
+}
+
+$('.delete_link').bind('click', remove_wrapper);
+
+// reset unique form id
+$('<%= "##{dom_id(@envelope)}_form_time" %>').val('<%= DateTime.now %>');
+
+// clear inputs and set focus to first input field of the modified envelope
+$('<%= "##{dom_id @envelope} .fields input" %>').val('')
+  .first().trigger('focus');
+
+<%= recalculate_envelope(@envelope) %>

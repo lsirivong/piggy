@@ -1,5 +1,13 @@
 Piggy::Application.routes.draw do
-  resources :transactions
+  resources :budgets, :except => [:index]
+
+  resources :goals, :except => [:index]
+
+  resources :dashboards, :only => [:show]
+
+  resources :envelopes, :except => [:index]
+
+  resources :transactions, :except => [:index]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -50,7 +58,7 @@ Piggy::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'dashboard#show'
 
   # See how all your routes lay out with "rake routes"
 

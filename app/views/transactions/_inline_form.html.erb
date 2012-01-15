@@ -1,0 +1,43 @@
+<%= form_for(inline_form, :remote => true) do |f| %>
+  <div class="transaction_fields fields">
+    <% if show_labels %>
+      <h3>Track more spending</h3>
+    <% end %>
+    <div class="field inline envelope">
+      <% if show_labels %>
+        <%= f.label :envelope_id, 'Category' %><br />
+      <% end %>
+      <%= f.collection_select(:envelope_id, inline_form.budgets, :id, :name) %>
+    </div>
+    <% if 0 < Goal.count %>
+      <div class="field inline goal_field">
+        <% if show_labels %>
+          <%= f.label :goal_id, 'Goal' %><br />
+        <% end %>
+        <%= f.collection_select(:goal_id, Goal.all, :id, :name, :include_blank => true) %>
+      </div>
+    <% end %>
+    <div class="field inline vendor">
+      <% if show_labels %>
+        <%= f.label :vendor, 'Description' %><br />
+      <% end %>
+      <%= f.text_field :vendor %>
+    </div>
+    <div class="field inline amount">
+      <% if show_labels %>
+        <%= f.label :amount, 'Amount' %><br />
+      <% end %>
+      <%= f.text_field :amount %>
+    </div>
+    <div class="field hidden">
+      <%= f.label :date %><br />
+      <%= f.date_select :date %>
+    </div>
+  </div>
+  
+  <%= hidden_field_tag(:time, DateTime.now, :class => "form_id", :id => "transaction_form_time") %>
+  <div class="actions">
+    <%= link_to('Cancel', inline_form, :remote => true) if show_cancel %>
+    <%= f.submit(:disable_with => "Saving...") %>
+  </div>
+<% end %>

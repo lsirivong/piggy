@@ -1,0 +1,60 @@
+// Place all the styles related to the Budgets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#budget_amount_fields, #budget_amount_fields input {
+  font-size: 2em;
+}
+h2 {
+  margin: 0;
+  font-size: 3em;
+}
+.edit-budget {
+  font-size: .5em;
+}
+
+.stats-wrap {
+  margin: 2.5em 0;
+}
+
+.stats {
+  font-size: 1em;
+  margin: 18px 0;
+  div {
+    width: 42%;
+    padding: 0 4%;
+    text-align: right;
+    float: left;
+  }
+  p {
+    text-align: center;
+    margin: 0;
+  }
+  i {
+    font-style: normal;
+    display: block;
+  }
+}
+.budget-stats {
+  i {
+    font-weight: bold;
+    font-size: 3em;
+    line-height: 1.1;
+  }
+  .remaining {
+    color: $positive;
+  }
+  .spent {
+    color: $negative;
+  }
+}
+.envelope-stats {
+  width: 33%;
+  float: left;
+  i {
+    font-size: 1.5em;
+    line-height: 1.4;
+  }
+}
+.envelope-stats-wrap {
+  clear: left;
+}

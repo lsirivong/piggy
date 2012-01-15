@@ -1,0 +1,8 @@
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+<h2>Goal:</h2>
+<%= render @goal %>
+
+<%= link_to 'Edit', edit_goal_path(@goal) %> |
+<%= link_to 'Delete', @goal, confirm: "Delete goal \"#{@goal.name}\"?", method: :delete,  %>

@@ -1,3 +1,112 @@
 // Place all the styles related to the transactions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.transactions {
+  border: 1px solid;
+  border-radius: 3px;
+  background-color: $transaction_background;
+  margin: 0;
+  padding: 6px;
+  clear: left;
+  list-style-type: none;
+  li {
+    border-top: 1px solid;
+    &:first-child {
+      border-top: none;
+    }
+  }
+}
+.edit_transaction, #new_transaction {
+  .field.inline {
+    float: left;
+    margin-left: 1%;
+    padding: 4px 0;
+  }
+  .actions {
+    text-align: right;
+    padding: 0 4px 4px;
+  }
+}
+.transaction_entry {
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 1em;
+}
+.transactions, .transactions li {
+  border-color: $transaction_border;
+}
+.transaction_fields {
+  h3 {
+    margin: 0;
+    text-align: center;
+  }
+  input[type="text"] {
+    font-size: 100%;
+    top: 4px;
+    bottom: 4px;
+    background-color: $transaction_input;
+    border: 1px solid $transaction_inset_dark;
+    border-bottom-color: $transaction_inset_light;
+    border-right-color: $transaction_inset_light;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -ie-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    &:focus {
+      background-color: #fefefe;
+    }
+  }
+  .envelope {
+    width: 12%;
+    select {
+      width: 100%;
+    }
+  }
+  .goal_field {
+    width: 12%;
+    select {
+      width: 100%;
+    }
+  }
+  .vendor {
+    width: 59%;
+    input {
+      width: 100%;
+    }
+  }
+  .amount {
+    width: 12%;
+    margin-right: 1%;
+    input {
+      width: 100%;
+    }
+  }
+}
+
+.amount {
+  float: right;
+  clear: right;
+  font-style: normal;
+}
+.amount.neg {
+  color: $negative;
+}
+.amount.pos {
+  color: $positive;
+}
+
+.metadata {
+  text-align: right;
+}
+.metadata, .metadata a, .metadata a:visited {
+  color: #c0ba8e;
+}
+.metadata:hover, .metadata:hover a, .metadata:hover a:visited {
+  color: #333;
+}
+.metadata:hover a:hover {
+  color: #559;
+}

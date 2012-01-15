@@ -6,4 +6,29 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require_tree .
+
+var alerted = false;
+
+function submit_focus(formId) {
+  if (!alerted)
+  {
+    $("#"+formId).trigger("submit.rails");
+  }
+}
+
+function add_fields_to_edit_transaction(transaction_id, content) {
+  $('#'+transaction_id).replaceWith(content);
+  $('#'+transaction_id + " .fields input").first().trigger('focus');
+}
+
+function remove_wrapper(event) {
+  // replace with contents only
+  contents = $(this).contents();
+  $(this).replaceWith(contents);
+}
+
+$(document).ready ( function() {
+  $('.delete_link').bind('click', remove_wrapper);
+});

@@ -1,0 +1,23 @@
+// Place all the styles related to the envelopes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.envelope h3 {
+  display: inline;
+}
+.envelope h4 {
+  display: inline;
+}
+
+.desc, .actions, .fields {
+  clear: both;
+}
+
+.envelope_percent_field {
+  display: inline;
+  float: left;
+  margin: 0 8px;
+}
+#start {
+  float: left;
+  display: inline-block;
+}

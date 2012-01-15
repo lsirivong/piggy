@@ -1,0 +1,36 @@
+// Place all the styles related to the goals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.goals {
+  padding: 4px 4px 4px 10px;
+  h2 {
+    text-align: center;
+  }
+}
+.goal {
+  width: 100%;
+  margin: 1em 0;
+  padding: 1em 0;
+  background: rgba(0, 0, 0, .1);
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 3px;
+  h3 {
+    margin: 0;
+    text-align: center;
+  }
+  div {
+    width: 42%;
+    text-align: right;
+    float: left;
+    padding: 4%;
+    i {
+      font-style: normal;
+      font-size: 1.5em;
+      line-height: 1.4;
+      display: block;
+    }
+  }
+  h4 {
+    margin: 0;
+  }
+}

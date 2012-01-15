@@ -1,0 +1,41 @@
+<%= form_for(@budget) do |f| %>
+  <% if @budget.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@budget.errors.count, "error") %> prohibited this budget from being saved:</h3>
+
+      <ul>
+      <% @budget.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h4>When?</h4>
+  <div class="field" id="start">
+    <%= f.label :start_date, 'Start:' %><br />
+    <%= f.text_field :start_date, :class => 'datepicker' %>
+  </div>
+  <div class="field" id="end">
+    <%= f.label :end_date, 'End:' %><br />
+    <%= f.text_field :end_date, :class => 'datepicker' %>
+  </div>
+  
+  <h4>How Much?</h4>
+  <div class="field" id="budget_amount_fields">
+    <%= f.label :amount, '$' %> <%= f.text_field :amount, :size => 5 %>
+  </div>
+  
+  <h4>Split it up</h4>
+  <%= f.fields_for :envelopes do |builder| %>
+    <div class="envelope_percent_field">
+      <%= builder.object.name %>:<br />
+      <%= builder.hidden_field :name %>
+      <%= builder.text_field :budget_percent, :size => 3 %>% 
+    </div>
+  <% end %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

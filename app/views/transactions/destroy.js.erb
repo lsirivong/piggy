@@ -1,0 +1,14 @@
+$('#<%= dom_id @transaction %>').slideUp(350, function() {
+   $('#<%= dom_id @transaction %>').remove()
+   });
+
+var transaction_list_selector = '.transactions';
+
+// if == 1 because it hasn't actually been removed yet...
+if ($(transaction_list_selector).length && $(transaction_list_selector).children().size() == 1)
+{
+  $(transaction_list_selector)
+    .addClass("hidden");
+}
+
+<%= recalculate_stats(@transaction) %>

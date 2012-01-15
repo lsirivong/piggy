@@ -1,15 +1,4 @@
 class TransactionsController < ApplicationController
-  # GET /transactions
-  # GET /transactions.json
-  def index
-    @transactions = Transaction.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @transactions }
-    end
-  end
-
   # GET /transactions/1
   # GET /transactions/1.json
   def show
@@ -17,6 +6,7 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.js
       format.json { render json: @transaction }
     end
   end
@@ -45,6 +35,8 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
+        @envelope = @transaction.envelope
+        format.js
         format.json { render json: @transaction, status: :created, location: @transaction }
       else
         format.html { render action: "new" }
@@ -59,8 +51,9 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
 
     respond_to do |format|
-      if @transaction.update_attributes(params[:transaction])
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully updated.' }
+      if @transaction.update_attributes!(params[:transaction])
+        format.html { redirect_to :root, notice: 'Transaction was successfully updated.' }
+        format.js
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -76,7 +69,8 @@ class TransactionsController < ApplicationController
     @transaction.destroy
 
     respond_to do |format|
-      format.html { redirect_to transactions_url }
+      format.html { redirect_to :root }
+      format.js
       format.json { head :ok }
     end
   end

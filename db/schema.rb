@@ -11,7 +11,37 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111207183636) do
+ActiveRecord::Schema.define(:version => 20111219014511) do
+
+  create_table "budgets", :force => true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.decimal  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "envelopes", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.decimal  "budget_percent"
+    t.integer  "budget_id"
+  end
+
+  create_table "goals", :force => true do |t|
+    t.string   "name"
+    t.date     "deadline"
+    t.decimal  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "submits", :force => true do |t|
+    t.datetime "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "transactions", :force => true do |t|
     t.date     "date"
@@ -20,6 +50,8 @@ ActiveRecord::Schema.define(:version => 20111207183636) do
     t.decimal  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "envelope_id"
+    t.integer  "goal_id"
   end
 
 end

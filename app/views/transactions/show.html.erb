@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
 
 <p>
   <b>Date:</b>
@@ -20,6 +22,9 @@
   <%= @transaction.amount %>
 </p>
 
+<p>
+  <b>Envelope:</b>
+  <%= @transaction.envelope.name unless @transaction.envelope.nil? %>
+</p>
 
-<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
-<%= link_to 'Back', transactions_path %>
+<%= link_to 'Edit', edit_transaction_path(@transaction) %>

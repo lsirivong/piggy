@@ -1,34 +1,52 @@
+html, input[type="text"], input[type="submit"] {
+  font-size: 100%;
+  line-height: 1.4;
+}
+
 body {
-  background-color: #fff;
+  background-color: #E5F9E4;
+  margin: 0 auto;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px; }
+  font-family: 'Lucida Grande', 'Helvetica Neue', helvetica, arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-width: 900px;
+}
+  
+.main {
+  margin: 0 auto;
+  padding: 0 12px;
+  max-width: 1200px;
+}
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px; }
+  font-family: verdana, arial, helvetica, sans-serif; }
 
 pre {
   background-color: #eee;
-  padding: 10px;
-  font-size: 11px; }
+  padding: 10px; }
 
 a {
-  color: #000;
+  color: #333;
   &:visited {
-    color: #666; }
+    color: #333; }
   &:hover {
-    color: #fff;
-    background-color: #000; } }
+    color: #559; }
+}
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px; } }
+#notice-wrap {
+  background-color: #fafafa;
+  padding: 12px;
+  margin: 8px 0;
+}
 
-#notice {
-  color: green; }
+#notice-wrap p:first-child {
+  padding-top: 0;
+  margin-top: 0;
+}
+#notice-wrap p:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
 
 .field_with_errors {
   padding: 2px;
@@ -46,11 +64,26 @@ div {
     text-align: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
-    font-size: 12px;
     margin: -7px;
     margin-bottom: 0px;
     background-color: #c00;
     color: #fff; }
   ul li {
-    font-size: 12px;
     list-style: square; } }
+
+h1, {
+  margin: 0;
+  padding: 10px 20px 0;
+  background: rgba(0, 0, 0, .85);
+  line-height: 1.5;
+  font-size: 1em;
+  font-style: italic;
+  a, a:visited, i {
+    color: #E5F9E4;
+    text-decoration: none;
+  }
+  i {
+    font-weight: normal;
+    float: right;
+  }
+}

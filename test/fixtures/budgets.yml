@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  start_date: 2011-12-1
+  end_date: 2011-12-2
+  amount: 9.99
+
+two:
+  start_date: 2011-12-15
+  end_date: 2011-12-16
+  amount: 9.99

@@ -1,0 +1,29 @@
+<div class="budget clearfix" id="<%= "#{dom_id(budget)}" %>">
+  <h2>
+  <%= link_to_unless_nil raw("&larr;"), budget.previous_budget %>
+  <%= formatted_date budget.start_date %> &ndash; <%= formatted_date budget.end_date %>
+  <%= link_to 'edit', edit_budget_path(budget), :class => 'edit-budget' %>
+  <%= link_to_unless_nil raw("&rarr;"), budget.next_budget %>
+  </h2>
+  
+  <div class="stats-wrap">
+    <div class="stats budget-stats clearfix">
+      <div class="remaining" id="budget_remaining"><i><%= financial_format budget.remaining.abs %></i> Remaining</div>
+      <div class="spent" id="budget_spent"><i><%= financial_format budget.spent.abs %></i> Spent</div>
+    </div>
+  
+    <div class="envelope-stats-wrap clearfix">
+    <% budget.envelopes.each do |e| %>
+      <div class="stats envelope-stats" id="<%= "#{dom_id(e)}" %>">
+        <p><b><%= e.name %></b></p>
+        <div class="remaining"><i><%= financial_format e.remaining.abs %></i> Remaining</div>
+        <div class="spent"><i><%= financial_format e.spent.abs %></i> Spent</div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+
+  <%= transaction_form_for_envelope_id(budget.envelopes.first.id) %>
+  
+  <%= transaction_list budget.transactions.order(:id) %>
+</div>

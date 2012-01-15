@@ -1,0 +1,6 @@
+<% unless transactions.nil? %>
+<ol class="transactions <%= "hidden" if transactions.count <= 0 %>">  
+  <% invert_transactions = false if local_assigns[:invert_transactions].nil? %>
+  <%= render :partial => transactions, :locals => { :invert_transaction => invert_transactions } %>
+</ol>
+<% end %>

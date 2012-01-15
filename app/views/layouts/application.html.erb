@@ -7,8 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+  	<h1><%= link_to "Piggy", :root %> <i>50/30/20 money management</i></h1>
+  </header>
+  <div class="main">
+  	<%= yield %>
 
-<%= yield %>
-
+    <div class="sidebar">
+    	<% if @goals %>
+      	<div class="goals">
+      	  <h2>Goals</h2>
+      	  <% if 0 < @goals.count %>
+        	  <%= render @goals %>
+      	  <% else %>
+            <div id="notice-wrap">
+              <p>Use goals to save up for expected bills or for a big purchase (<%= link_to 'treat yo self!', 'http://www.youtube.com/watch?v=jcwxHkXAdmM', :target => '_new'%>)</p>
+            </div>
+      	  <% end %>
+      	  <%= link_to "Add a new goal", new_goal_path %>
+      	</div>
+    	<% end %>
+  	</div>
+  </div>
 </body>
 </html>
