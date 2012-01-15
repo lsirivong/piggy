@@ -1,15 +1,4 @@
 class BudgetsController < ApplicationController
-  # GET /budgets
-  # GET /budgets.json
-  def index
-    @budgets = Budget.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @budgets }
-    end
-  end
-
   # GET /budgets/1
   # GET /budgets/1.json
   def show
