@@ -1,7 +1,7 @@
 Piggy::Application.routes.draw do
   resources :budgets, :except => [:index]
 
-  resources :goals
+  resources :goals, :except => [:index]
 
   resources :dashboards, :only => [:show]
 

@@ -1,8 +1,9 @@
 <div class="budget clearfix" id="<%= "#{dom_id(budget)}" %>">
   <h2>
-  <%= link_to_unless_nil raw("&larr;"), @budget.previous_budget %>
-  <%= formatted_date budget.start_date %> &ndash; <%= formatted_date budget.end_date %> (<%= financial_format budget.amount %>)
-  <%= link_to_unless_nil raw("&rarr;"), @budget.next_budget %>
+  <%= link_to_unless_nil raw("&larr;"), budget.previous_budget %>
+  <%= formatted_date budget.start_date %> &ndash; <%= formatted_date budget.end_date %> <%= financial_format budget.amount %> 
+  <%= link_to 'edit', edit_budget_path(budget), :class => 'edit-budget' %>
+  <%= link_to_unless_nil raw("&rarr;"), budget.next_budget %>
   </h2>
   
   <%= transaction_form_for_envelope_id(budget.envelopes.first.id) %>
