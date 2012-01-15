@@ -26,6 +26,14 @@ class Budget < ActiveRecord::Base
   end
   
   def remaining
-    amount + spent
+    [amount + spent, 0].max
+  end
+  
+  def spent_too_much
+    spent.abs > amount
+  end
+  
+  def amount_over
+    [amount + spent, 0].min.abs
   end
 end

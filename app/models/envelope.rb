@@ -13,6 +13,14 @@ class Envelope < ActiveRecord::Base
   end
   
   def remaining
-    budget_amount + spent
+    [budget_amount + spent, 0].max
+  end
+  
+  def spent_too_much
+    spent.abs > budget_amount
+  end
+  
+  def amount_over
+    [budget_amount + spent, 0].min.abs
   end
 end
