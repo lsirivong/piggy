@@ -5,6 +5,7 @@ var transaction_list_selector = budget_selector + ' .transactions';
 if ($(transaction_list_selector).length)
 {
   $(transaction_list_selector)
+    .removeClass("hidden")
     .prepend("<%= escape_javascript(render(@transaction)) %>")
     // 2. get the first li and animate it open
     .children('li').first().css('display', 'none')

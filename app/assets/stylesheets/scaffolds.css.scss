@@ -1,16 +1,20 @@
+html, input[type="text"], input[type="submit"] {
+  font-size: 100%;
+  line-height: 1.4;
+}
+
 body {
   background-color: #E5F9E4;
   margin: 0 auto;
   color: #333;
   font-family: 'Lucida Grande', 'Helvetica Neue', helvetica, arial, sans-serif;
-  font-size: 100%;
-  line-height: 1.4;
   -webkit-font-smoothing: antialiased;
+  min-width: 900px;
 }
   
 .main {
   margin: 0 auto;
-  min-width: 900px;
+  padding: 0 12px;
   max-width: 1200px;
 }
 

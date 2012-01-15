@@ -17,11 +17,12 @@ module TransactionsHelper
   
   def transaction_form(transaction, options={} )
     defaults = {
-      :show_actions => false,
+      :show_cancel => false,
+      :show_labels => true
     }
     options = defaults.merge(options)
     
-    render(:partial => 'transactions/inline_form', :object => transaction, :locals => { :show_actions => options[:show_actions] })
+    render(:partial => 'transactions/inline_form', :object => transaction, :locals => { :show_cancel => options[:show_cancel], :show_labels => options[:show_labels] })
   end
   
   def transaction_form_for_envelope_id(envelope_id)

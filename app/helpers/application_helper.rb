@@ -4,7 +4,7 @@ module ApplicationHelper
   end
   
   def link_to_edit_transaction(name, transaction)
-    fields = transaction_form transaction, :show_actions => true
+    fields = transaction_form transaction, :show_cancel => true, :show_labels => false
 
     li = content_tag(:li, fields, :id => dom_id(transaction))
 

@@ -1,23 +1,37 @@
 <%= form_for(inline_form, :remote => true) do |f| %>
   <div class="transaction_fields fields">
+    <% if show_labels %>
+      <h3>Track more spending</h3>
+    <% end %>
     <div class="field inline envelope">
-      <%= f.collection_select(:envelope_id, inline_form.budgets, :id, :name ) %>
+      <% if show_labels %>
+        <%= f.label :envelope_id, 'Category' %><br />
+      <% end %>
+      <%= f.collection_select(:envelope_id, inline_form.budgets, :id, :name, :class => "dropdown") %>
     </div>
     <div class="field inline vendor">
+      <% if show_labels %>
+        <%= f.label :vendor, 'Description' %><br />
+      <% end %>
       <%= f.text_field :vendor %>
     </div>
     <div class="field inline amount">
+      <% if show_labels %>
+        <%= f.label :amount, 'Amount' %><br />
+      <% end %>
       <%= f.text_field :amount %>
     </div>
     <div class="field hidden">
-      <%= f.label :date %><br />
+      <% if show_labels %>
+        <%= f.label :date %><br />
+      <% end %>
       <%= f.date_select :date %>
     </div>
   </div>
   
   <%= hidden_field_tag(:time, DateTime.now, :class => "form_id", :id => "transaction_form_time") %>
-  <div class="actions <%= "visuallyhidden" unless show_actions %>">
-    <%= link_to('Cancel', inline_form, :remote => true) %>
+  <div class="actions">
+    <%= link_to('Cancel', inline_form, :remote => true) if show_cancel %>
     <%= f.submit(:onfocus => "submit_focus('new_transaction')", :disable_with => "Saving...") %>
   </div>
 <% end %>

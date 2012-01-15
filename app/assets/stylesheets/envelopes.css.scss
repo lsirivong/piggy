@@ -8,12 +8,6 @@
   display: inline;
 }
 
-.field.inline {
-  float: left;
-  height: 2.5em;
-  position: relative;
-  margin: 0;
-}
 .desc, .actions, .fields {
   clear: both;
 }
@@ -21,6 +15,7 @@
 .envelope_percent_field {
   display: inline;
   float: left;
+  margin: 0 8px;
 }
 #start {
   float: left;

@@ -1,8 +1,6 @@
 <li id="<%= dom_id transaction %>" >  
   <%= transaction.vendor %>
-  
   <% invert_transaction = false if local_assigns[:invert_transaction].nil? %>
-
   <%= amount_tag transaction.amount, invert_transaction %>
   
   <section class="metadata">
@@ -10,11 +8,8 @@
     <%= "#{transaction.envelope.name} | " unless transaction.envelope.nil? %>
     <%= link_to_edit_transaction("Edit", transaction) %> |
     <% unless transaction.goal.nil? %>
-      <%= link_to transaction.goal.name, transaction.goal %>
-    <% else %>
-      (none)
+      <%= link_to transaction.goal.name, transaction.goal %> |
     <% end %>
-    |
-    <%= link_to 'X', transaction, :method => :delete, :remote => true, :class => "delete_link" %>
+    <%= link_to 'X', transaction, :method => :delete, :remote => true, :class => "delete_link", :title => 'Delete' %>
   </section>
 </li>

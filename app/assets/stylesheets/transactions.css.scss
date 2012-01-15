@@ -4,7 +4,7 @@
 
 .transactions {
   border: 1px solid;
-  font-family: 'Courier New';
+  border-radius: 3px;
   background-color: $transaction_background;
   margin: 0;
   padding: 6px;
@@ -17,25 +17,35 @@
     }
   }
 }
-.transaction_entry {
-    background-color: $transaction_background;
-    border: 1px solid;
-    border-bottom: none;
+.edit_transaction, #new_transaction {
+  .field.inline {
+    float: left;
+    margin-left: 1%;
+    padding: 4px 0;
+  }
+  .actions {
+    text-align: right;
+    padding: 0 4px 4px;
+  }
 }
-.transactions, .transactions li, .transaction_entry {
+.transaction_entry {
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 1em;
+}
+.transactions, .transactions li {
   border-color: $transaction_border;
 }
 .transaction_fields {
-  input[type="text"], select {
-    position: absolute;
-    padding: 5px 6px;
+  h3 {
     margin: 0;
-    font-family: 'Courier New';
+    text-align: center;
+  }
+  input[type="text"] {
     font-size: 100%;
     top: 4px;
     bottom: 4px;
-  }
-  input[type="text"] {
     background-color: $transaction_input;
     border: 1px solid $transaction_inset_dark;
     border-bottom-color: $transaction_inset_light;
@@ -50,24 +60,22 @@
     }
   }
   .envelope {
-    width: 20%;
+    width: 19%;
     select {
-      left: 4px;
-      right: 2px;
+      width: 100%;
     }
   }
   .vendor {
-    width: 60%;
+    width: 58%;
     input {
-      left: 4px;
-      right: 2px;
+      width: 100%;
     }
   }
   .amount {
-    width: 20%;
+    width: 19%;
+    margin-right: 1%;
     input {
-      left: 2px;
-      right: 4px;
+      width: 100%;
     }
   }
 }

@@ -22,8 +22,7 @@
     <% end %>
     </div>
   </div>
-  
-  <p>Track More Spending:</p>
+
   <%= transaction_form_for_envelope_id(budget.envelopes.first.id) %>
   
   <%= transaction_list budget.transactions.order(:id) %>
