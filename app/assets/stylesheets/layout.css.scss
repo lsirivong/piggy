@@ -3,3 +3,5 @@ $transaction_border: darken(desaturate($transaction_background, 50%), 10%);
 $transaction_input: lighten($transaction_background, 8%);
 $transaction_inset_light: lighten(desaturate($transaction_input, 0%), 6%);
 $transaction_inset_dark: darken(desaturate($transaction_input, 20%), 5%);
+$negative: #9e0000;
+$positive: #0c8400;
