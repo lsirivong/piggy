@@ -30,9 +30,7 @@
       <%= f.text_field :amount %>
     </div>
     <div class="field hidden">
-      <% if show_labels %>
-        <%= f.label :date %><br />
-      <% end %>
+      <%= f.label :date %><br />
       <%= f.date_select :date %>
     </div>
   </div>
@@ -40,6 +38,6 @@
   <%= hidden_field_tag(:time, DateTime.now, :class => "form_id", :id => "transaction_form_time") %>
   <div class="actions">
     <%= link_to('Cancel', inline_form, :remote => true) if show_cancel %>
-    <%= f.submit(:onfocus => "submit_focus('new_transaction')", :disable_with => "Saving...") %>
+    <%= f.submit(:disable_with => "Saving...") %>
   </div>
 <% end %>

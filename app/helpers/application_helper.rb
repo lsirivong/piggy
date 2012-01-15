@@ -44,6 +44,8 @@ module ApplicationHelper
       out << animate % ["##{dom_id goal} .saved i", "#{financial_format goal.total}"]
       out << animate % ["##{dom_id goal} .remaining i", "#{financial_format goal.remaining}"]
     end
+    
+    return out
   end
   
   def link_to_unless_nil(text, object)
