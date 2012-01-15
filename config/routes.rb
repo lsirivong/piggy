@@ -7,7 +7,7 @@ Piggy::Application.routes.draw do
 
   resources :envelopes, :except => [:index]
 
-  resources :transactions
+  resources :transactions, :except => [:index]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
