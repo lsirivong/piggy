@@ -8,7 +8,8 @@
   background-color: $transaction_background;
   margin: 0;
   padding: 6px;
-  padding-left: 33px;
+  clear: left;
+  list-style-type: none;
   li {
     border-top: 1px solid;
     &:first-child {
@@ -77,10 +78,10 @@
   font-style: normal;
 }
 .amount.neg {
-  color: red;
+  color: $negative;
 }
 .amount.pos {
-  color: green;
+  color: $positive;
 }
 
 .metadata {
