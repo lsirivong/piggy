@@ -4,7 +4,7 @@ class Envelope < ActiveRecord::Base
   belongs_to :budget
   
   accepts_nested_attributes_for :transactions, :reject_if => :all_blank, :allow_destroy => true
-  def total
+  def spent
     transactions.sum(:amount)
   end
   
@@ -12,7 +12,7 @@ class Envelope < ActiveRecord::Base
     (budget_percent / 100.0) * budget.amount
   end
   
-  def amount_available
-    budget_amount + total
+  def remaining
+    budget_amount + spent
   end
 end

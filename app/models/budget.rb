@@ -20,4 +20,12 @@ class Budget < ActiveRecord::Base
   def next_budget
     self.class.first(:conditions => ["created_at > ?", created_at], :order => "created_at asc")
   end
+  
+  def spent
+    transactions.sum(:amount)
+  end
+  
+  def remaining
+    amount + spent
+  end
 end
