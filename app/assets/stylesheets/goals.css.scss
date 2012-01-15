@@ -18,7 +18,7 @@
     margin: 0;
     text-align: center;
   }
-  div {
+  .stat {
     width: 42%;
     text-align: right;
     float: left;
@@ -29,6 +29,9 @@
       line-height: 1.4;
       display: block;
     }
+  }
+  .actions {
+    text-align: center;
   }
   h4 {
     margin: 0;

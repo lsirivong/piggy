@@ -65,14 +65,23 @@
       width: 100%;
     }
   }
+  $goal_width: 12%;
   .goal_field {
-    width: 12%;
+    width: $goal_width;
     select {
       width: 100%;
     }
   }
+  $vendor_width: 59%;
   .vendor {
-    width: 59%;
+    width: $vendor_width;
+    input {
+      width: 100%;
+    }
+  }
+  /* this is used if goal_field doesn't exist */
+  .vendor_wide {
+    width: $vendor_width + $goal_width + 1%;
     input {
       width: 100%;
     }
