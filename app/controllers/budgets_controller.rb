@@ -1,15 +1,4 @@
 class BudgetsController < ApplicationController
-  # GET /budgets
-  # GET /budgets.json
-  def index
-    @budgets = Budget.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @budgets }
-    end
-  end
-
   # GET /budgets/1
   # GET /budgets/1.json
   def show
@@ -84,7 +73,7 @@ class BudgetsController < ApplicationController
     @budget.destroy
 
     respond_to do |format|
-      format.html { redirect_to budgets_url }
+      format.html { redirect_to :root }
       format.json { head :ok }
     end
   end

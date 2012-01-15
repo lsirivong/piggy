@@ -5,12 +5,6 @@ class BudgetsControllerTest < ActionController::TestCase
     @budget = budgets(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:budgets)
-  end
-
   test "should get new" do
     get :new
     assert_response :success
@@ -44,6 +38,6 @@ class BudgetsControllerTest < ActionController::TestCase
       delete :destroy, id: @budget.to_param
     end
 
-    assert_redirected_to budgets_path
+    assert_redirected_to :root
   end
 end

@@ -5,12 +5,6 @@ class GoalsControllerTest < ActionController::TestCase
     @goal = goals(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:goals)
-  end
-
   test "should get new" do
     get :new
     assert_response :success
@@ -44,6 +38,6 @@ class GoalsControllerTest < ActionController::TestCase
       delete :destroy, id: @goal.to_param
     end
 
-    assert_redirected_to goals_path
+    assert_redirected_to :root
   end
 end

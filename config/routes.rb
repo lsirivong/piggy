@@ -1,13 +1,13 @@
 Piggy::Application.routes.draw do
-  resources :budgets
+  resources :budgets, :except => [:index]
 
-  resources :goals
+  resources :goals, :except => [:index]
 
   resources :dashboards, :only => [:show]
 
-  resources :envelopes
+  resources :envelopes, :except => [:index]
 
-  resources :transactions
+  resources :transactions, :except => [:index]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

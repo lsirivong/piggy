@@ -1,6 +1,7 @@
-<h1>Editing goal</h1>
+<h2>Editing goal</h2>
 
 <%= render 'form' %>
 
 <%= link_to 'Show', @goal %> |
-<%= link_to 'Back', goals_path %>
+<%= link_to 'Delete', @goal, confirm: "Delete goal \"#{@goal.name}\"?", method: :delete %> |
+<%= link_to 'Cancel', :root %>

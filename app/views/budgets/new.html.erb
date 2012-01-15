@@ -6,3 +6,7 @@
 <h2>New budget</h2>
 
 <%= render 'form' %>
+
+<% unless session[:no_budgets_found] && session[:no_budgets_found] == true %>
+  <%= link_to 'Cancel', :root %>
+<% end %>
