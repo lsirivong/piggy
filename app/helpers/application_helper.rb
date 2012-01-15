@@ -15,7 +15,8 @@ module ApplicationHelper
     "$('##{dom_id envelope}_available').html('#{financial_format envelope.amount_available}');"
   end
   
-  def recalculate_stats(envelope)
+  def recalculate_stats(transaction)
+    envelope = transaction.envelope
     animation_after = "
     .animate(
       { opacity: 1 },
@@ -38,6 +39,11 @@ module ApplicationHelper
     out << animate % ["#budget_spent i", "#{financial_format envelope.budget.spent.abs}"]
     out << animate % ["##{dom_id envelope} .remaining i", "#{financial_format envelope.remaining.abs}"]
     out << animate % ["##{dom_id envelope} .spent i", "#{financial_format envelope.spent.abs}"]
+    goal = transaction.goal
+    unless goal.nil?
+      out << animate % ["##{dom_id goal} .saved i", "#{financial_format goal.total}"]
+      out << animate % ["##{dom_id goal} .remaining i", "#{financial_format goal.remaining}"]
+    end
   end
   
   def link_to_unless_nil(text, object)

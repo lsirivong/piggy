@@ -5,4 +5,8 @@ class Goal < ActiveRecord::Base
     sum = transactions.sum(:amount)
     sum.magnitude
   end 
+  
+  def remaining
+    amount - total
+  end
 end

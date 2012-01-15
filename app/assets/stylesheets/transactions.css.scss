@@ -60,19 +60,25 @@
     }
   }
   .envelope {
-    width: 19%;
+    width: 12%;
+    select {
+      width: 100%;
+    }
+  }
+  .goal_field {
+    width: 12%;
     select {
       width: 100%;
     }
   }
   .vendor {
-    width: 58%;
+    width: 59%;
     input {
       width: 100%;
     }
   }
   .amount {
-    width: 19%;
+    width: 12%;
     margin-right: 1%;
     input {
       width: 100%;

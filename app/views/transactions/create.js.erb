@@ -26,4 +26,4 @@ $('#transaction_form_time').val('<%= DateTime.now %>');
 $(budget_selector + ' .transaction_fields input').val('')
   .first().trigger('focus');
 
-<%= recalculate_stats(@transaction.envelope) %>
+<%= recalculate_stats(@transaction) %>

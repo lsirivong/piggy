@@ -7,8 +7,16 @@
       <% if show_labels %>
         <%= f.label :envelope_id, 'Category' %><br />
       <% end %>
-      <%= f.collection_select(:envelope_id, inline_form.budgets, :id, :name, :class => "dropdown") %>
+      <%= f.collection_select(:envelope_id, inline_form.budgets, :id, :name) %>
     </div>
+    <% if 0 < Goal.count %>
+      <div class="field inline goal_field">
+        <% if show_labels %>
+          <%= f.label :goal_id, 'Goal' %><br />
+        <% end %>
+        <%= f.collection_select(:goal_id, Goal.all, :id, :name, :include_blank => true) %>
+      </div>
+    <% end %>
     <div class="field inline vendor">
       <% if show_labels %>
         <%= f.label :vendor, 'Description' %><br />

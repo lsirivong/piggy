@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.budget, .goals, .goal {
+.budget, .sidebar, .goal {
   display: inline-block;
   float:  left;
 }
@@ -12,6 +12,6 @@
 .envelope {
   width:  100%;
 }
-.goals {
+.sidebar {
   width: 30%;
 }
