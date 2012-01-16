@@ -15,7 +15,7 @@ class GoalsControllerTest < ActionController::TestCase
       post :create, goal: @goal.attributes
     end
 
-    assert_redirected_to goal_path(assigns(:goal))
+    assert_redirected_to :root
   end
 
   test "should show goal" do
@@ -30,7 +30,7 @@ class GoalsControllerTest < ActionController::TestCase
 
   test "should update goal" do
     put :update, id: @goal.to_param, goal: @goal.attributes
-    assert_redirected_to goal_path(assigns(:goal))
+    assert_redirected_to :root
   end
 
   test "should destroy goal" do

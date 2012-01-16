@@ -6,7 +6,7 @@ class EnvelopeTest < ActiveSupport::TestCase
     lunch = transactions(:lunch)
     dinner = transactions(:dinner)
     
-    assert e.spent == lunch.amount + dinner.amount, "spent should be the sum of its transactions"
+    assert e.spent == (lunch.amount + dinner.amount).abs, "spent should be the sum of its transactions"
     
     drinks = Transaction.new
     drinks.vendor = "Bar"
@@ -15,6 +15,6 @@ class EnvelopeTest < ActiveSupport::TestCase
     drinks.envelope = e
     assert drinks.save!
     
-    assert e.spent == lunch.amount + dinner.amount + drinks.amount
+    assert e.spent == (lunch.amount + dinner.amount + drinks.amount).abs
   end
 end

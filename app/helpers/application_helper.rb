@@ -17,23 +17,16 @@ module ApplicationHelper
   
   def recalculate_stats(transaction)
     envelope = transaction.envelope
+    out = ""
+    out << set_ledger_stats("#{dom_id envelope}", envelope)
     
     budget = envelope.budget
-    out = fade_change("#budget_remaining .value", budget.remaining)
-    out << fade_change("#budget_spent .value", budget.spent.abs)
-  
+    out << set_ledger_stats("budget", budget)
+    
     budget_over_wrap_selector = "#budget_spent .amount_over_wrap"
-    out << set_amount_over_visibility(budget.spent_too_much, budget_over_wrap_selector)
-    
-    out << fade_change("#budget_spent .amount_over", budget.amount_over)
-    
-    out << fade_change("##{dom_id envelope} .remaining .value", envelope.remaining.abs)
-    out << fade_change("##{dom_id envelope} .spent .value", envelope.spent.abs)
-  
-    out << fade_change("##{dom_id envelope} .spent .amount_over", envelope.amount_over)
-    
+    out << set_amount_over_visibility(budget_over_wrap_selector, budget)
     envelope_over_wrap_selector = "##{dom_id envelope} .spent .amount_over_wrap"
-    out << set_amount_over_visibility(envelope.spent_too_much, envelope_over_wrap_selector)
+    out << set_amount_over_visibility(envelope_over_wrap_selector, envelope)
     
     goal = transaction.goal
     unless goal.nil?
@@ -50,8 +43,14 @@ module ApplicationHelper
   
   private
   
-  def set_amount_over_visibility(spent_too_much, sel)
-    if spent_too_much
+  def set_ledger_stats(sel_prefix, ledger)
+    out = fade_change("##{sel_prefix}_remaining_value", ledger.remaining)
+    out << fade_change("##{sel_prefix}_spent_value", ledger.spent)
+    out << fade_change("##{sel_prefix}_spent_over_value", ledger.amount_over)
+  end
+  
+  def set_amount_over_visibility(sel, ledger)
+    if ledger.spent_over?
       return show_if_hidden(sel)
     else
       return hide_if_shown(sel)
@@ -67,16 +66,8 @@ module ApplicationHelper
   end
   
   def fade_change(selector, value)
-    animate = "$('%s').animate(
-      { opacity: 0 },
-      350, function() {
-        $(this).html('%s').animate(
-          { opacity: 1 },
-          350, function() {
-            // Animation complete.
-          }
-        );
-      }
+    animate = "$('%s').animate({ opacity: 0 }, 350,
+      function() { $(this).html('%s').animate( { opacity: 1 }, 350); }
     );"
     
     return animate % [selector, "#{financial_format value}"]

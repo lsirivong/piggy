@@ -1,5 +1,5 @@
 <h3><%= link_to envelope.name, envelope %></h3>
-<h4 class="available" id="<%= "#{dom_id(envelope)}_available" %>"><%= financial_format envelope.remaining %> / <%= financial_format envelope.budget_amount %></h4>
+<h4 class="available" id="<%= "#{dom_id(envelope)}_available" %>"><%= financial_format envelope.remaining %> / <%= financial_format envelope.amount %></h4>
 
 <%= transaction_form_for_envelope_id(envelope.id) %>
 
