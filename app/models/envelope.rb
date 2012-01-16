@@ -5,9 +5,9 @@ class Envelope < ActiveRecord::Base
   
   accepts_nested_attributes_for :transactions, :reject_if => :all_blank, :allow_destroy => true
   
-  include Ledger #requires spent and amount methods
-  def spent
-    transactions.sum(:amount).abs
+  include Ledger # requires sum and amount methods
+  def sum
+    transactions.sum(:amount)
   end
   def amount
     (budget_percent / 100.0) * budget.amount
