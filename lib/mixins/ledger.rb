@@ -1,12 +1,16 @@
 module Ledger
   # assumes spent and amount methods are defined
   
+  def spent
+    [sum, 0].min.abs
+  end
+  
   def remaining
     [net, 0].max
   end
   
   def spent_over?
-    spent > amount
+    net < 0
   end
   
   def amount_over
@@ -16,6 +20,6 @@ module Ledger
   private
   
   def net
-    amount - spent
+    amount + sum
   end
 end
