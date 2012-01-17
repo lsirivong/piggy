@@ -83,7 +83,7 @@ class TransactionsController < ApplicationController
   private
   
   def prevent_multiple_submission
-    unless params[:time].nil?
+    if params[:time].present?
       form_time = Time.parse(params[:time])
       submission = Submit.find_by_time(form_time)
     
