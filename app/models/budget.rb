@@ -21,19 +21,8 @@ class Budget < ActiveRecord::Base
     self.class.first(:conditions => ["created_at > ?", created_at], :order => "created_at asc")
   end
   
-  def spent
+  include Ledger # requires sum and amount methods
+  def sum
     transactions.sum(:amount)
-  end
-  
-  def remaining
-    [amount + spent, 0].max
-  end
-  
-  def spent_too_much
-    spent.abs > amount
-  end
-  
-  def amount_over
-    [amount + spent, 0].min.abs
   end
 end

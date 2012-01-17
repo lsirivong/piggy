@@ -12,6 +12,33 @@ class Transaction < ActiveRecord::Base
   belongs_to :envelope
   belongs_to :goal
   
+  # virtual attribute
+  def amount_display
+    if amount.nil?
+      return nil
+    elsif 0 < amount
+      return "+#{amount}"
+    else
+      return "#{amount.abs}"
+    end
+  end
+  
+  def amount_display=(amount_display)
+    if amount_display.present?
+      if amount_display.strip.start_with?('+')
+        self.amount = (BigDecimal.new(amount_display).abs)
+      else
+        self.amount = -1*(BigDecimal.new(amount_display).abs)
+      end
+    end
+  rescue ArgumentError
+    @invalid_amount = true
+  end
+  
+  def validate
+    errors.add(:amount, "is invalid") if @invalid_amount
+  end
+  
   def budget
     unless envelope.nil?
       envelope.budget

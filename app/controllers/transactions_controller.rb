@@ -1,4 +1,8 @@
 class TransactionsController < ApplicationController
+  before_filter(:only => [:create, :update]) do |controller|
+    return prevent_multiple_submission if controller.request.format.js?
+  end
+  
   # GET /transactions/1
   # GET /transactions/1.json
   def show
@@ -35,7 +39,6 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
-        @envelope = @transaction.envelope
         format.js
         format.json { render json: @transaction, status: :created, location: @transaction }
       else
@@ -51,7 +54,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
 
     respond_to do |format|
-      if @transaction.update_attributes!(params[:transaction])
+      if update_attributes!(params[:transaction])
         format.html { redirect_to :root, notice: 'Transaction was successfully updated.' }
         format.js
         format.json { head :ok }
@@ -72,6 +75,23 @@ class TransactionsController < ApplicationController
       format.html { redirect_to :root }
       format.js
       format.json { head :ok }
+    end
+  end
+  
+  private
+  
+  def prevent_multiple_submission
+    unless params[:time].nil?
+      form_time = Time.parse(params[:time])
+      submission = Submit.find_by_time(form_time)
+    
+      if submission.nil?
+        submission = Submit.new(:time => form_time)
+        submission.save!
+      else
+        # respond with nothing, request is halted
+        head :no_content
+      end
     end
   end
 end
