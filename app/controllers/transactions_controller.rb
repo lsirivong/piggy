@@ -54,7 +54,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
 
     respond_to do |format|
-      if update_attributes!(params[:transaction])
+      if @transaction.update_attributes!(params[:transaction])
         format.html { redirect_to :root, notice: 'Transaction was successfully updated.' }
         format.js
         format.json { head :ok }
