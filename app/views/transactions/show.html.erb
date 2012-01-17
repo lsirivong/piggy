@@ -24,7 +24,7 @@
 
 <p>
   <b>Envelope:</b>
-  <%= @transaction.envelope.name unless @transaction.envelope.nil? %>
+  <%= @transaction.envelope.name if @transaction.envelope.present? %>
 </p>
 
 <%= link_to 'Edit', edit_transaction_path(@transaction) %>

@@ -25,7 +25,7 @@ module ApplicationHelper
     out << set_amount_over_visibility(envelope_over_wrap_selector, envelope)
     
     goal = transaction.goal
-    unless goal.nil?
+    if goal.present?
       out << fade_change("##{dom_id goal} .saved .value", goal.total)
       out << fade_change("##{dom_id goal} .remaining .value", goal.remaining)
     end
@@ -34,7 +34,7 @@ module ApplicationHelper
   end
   
   def link_to_unless_nil(text, object)
-    link_to(text, object) unless object.nil?
+    link_to(text, object) if object.present?
   end
   
   private

@@ -3,8 +3,7 @@ class EnvelopesController < ApplicationController
   # GET /envelopes/1.json
   def show
     @envelope = Envelope.find(params[:id])
-    
-    @transactions = @envelope.transactions unless @envelope.nil?
+    @transactions = @envelope.transactions if @envelope.present?
 
     respond_to do |format|
       format.html # show.html.erb

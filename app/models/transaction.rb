@@ -48,7 +48,7 @@ class Transaction < ActiveRecord::Base
   end
   
   def budget
-    unless envelope.nil?
+    if envelope.present?
       envelope.budget
     else
       # no envelope, no budget.
@@ -57,7 +57,7 @@ class Transaction < ActiveRecord::Base
   end
   
   def budgets
-    unless budget.nil?
+    if budget.present?
       Envelope.where(:budget_id => budget.id)
     else
       Envelope.all
@@ -65,13 +65,13 @@ class Transaction < ActiveRecord::Base
   end
   
   def envelope_must_exist_if_given
-    if !envelope_id.nil? && envelope.nil?
+    if envelope_id.present? && envelope.nil?
       errors.add(:envelope, "assigned envelope does not exist")
     end
   end
   
   def goal_must_exist_if_given
-    if !goal_id.nil? && goal.nil?
+    if goal_id.present? && goal.nil?
       errors.add(:goal, "assigned goal does not exist")
     end
   end
