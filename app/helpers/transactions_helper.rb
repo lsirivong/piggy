@@ -29,4 +29,13 @@ module TransactionsHelper
     transaction = Transaction.new(:envelope_id => envelope_id)
     content_tag(:div, transaction_form(transaction), :class => "transaction_entry clearfix")
   end
+  
+  def list_errors(transaction)
+    out = "$('##{dom_id transaction}_errors').html('');"
+    @transaction.errors.full_messages.each do |msg|
+      out << "$('##{dom_id transaction}_errors').append('<li>#{escape_javascript(msg)}</li>');"
+    end
+    
+    raw out
+  end
 end
