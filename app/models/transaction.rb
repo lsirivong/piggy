@@ -1,13 +1,13 @@
 class Transaction < ActiveRecord::Base
   validates :date,    :presence => true
   validates :vendor,  :presence => true
-  validates :amount,  :presence => true,
-                      :format   => { 
+  validates :amount,  :format   => {
                         :with => /\A-?[[:digit:]]+\.?[[:digit:]]{,2}\Z/,
-                        :message => "Must be a number with at most two decimal places."
+                        :message => "must be a number with at most two decimal places."
                       }
   validate :envelope_must_exist_if_given
   validate :goal_must_exist_if_given
+  validate :amount_display_format
                       
   belongs_to :envelope
   belongs_to :goal
@@ -25,6 +25,14 @@ class Transaction < ActiveRecord::Base
   
   def amount_display=(amount_display)
     if amount_display.present?
+      
+      # validate amount_display format
+      if (/\A[-\+]?[[:digit:]]+\.?[[:digit:]]{,2}\Z/ =~ amount_display).nil?
+        # set the amount to a dummy value to circumvent amount validation
+        self.amount = 0
+        raise ArgumentError
+      end
+      
       if amount_display.strip.start_with?('+')
         self.amount = (BigDecimal.new(amount_display).abs)
       else
@@ -35,8 +43,8 @@ class Transaction < ActiveRecord::Base
     @invalid_amount = true
   end
   
-  def validate
-    errors.add(:amount, "is invalid") if @invalid_amount
+  def amount_display_format
+    errors.add(:amount, "must be a number with at most two decimal places.") if @invalid_amount
   end
   
   def budget

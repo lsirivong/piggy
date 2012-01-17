@@ -43,6 +43,7 @@ class TransactionsController < ApplicationController
         format.json { render json: @transaction, status: :created, location: @transaction }
       else
         format.html { render action: "new" }
+        format.js
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
@@ -54,12 +55,13 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
 
     respond_to do |format|
-      if @transaction.update_attributes!(params[:transaction])
+      if @transaction.update_attributes(params[:transaction])
         format.html { redirect_to :root, notice: 'Transaction was successfully updated.' }
         format.js
         format.json { head :ok }
       else
         format.html { render action: "edit" }
+        format.js
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
