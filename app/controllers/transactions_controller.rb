@@ -2,12 +2,11 @@ class TransactionsController < ApplicationController
   before_filter(:only => [:create, :update]) do |controller|
     return prevent_multiple_submission if controller.request.format.js?
   end
+  before_filter :require_transaction_ownership, :except => [:new, :create]
   
   # GET /transactions/1
   # GET /transactions/1.json
   def show
-    @transaction = Transaction.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.js
@@ -52,8 +51,6 @@ class TransactionsController < ApplicationController
   # PUT /transactions/1
   # PUT /transactions/1.json
   def update
-    @transaction = Transaction.find(params[:id])
-
     respond_to do |format|
       if @transaction.update_attributes(params[:transaction])
         format.html { redirect_to :root, notice: 'Transaction was successfully updated.' }
@@ -70,9 +67,6 @@ class TransactionsController < ApplicationController
   # DELETE /transactions/1
   # DELETE /transactions/1.json
   def destroy
-    @transaction = Transaction.find(params[:id])
-    @transaction.destroy
-
     respond_to do |format|
       format.html { redirect_to :root }
       format.js
@@ -95,5 +89,10 @@ class TransactionsController < ApplicationController
         head :no_content
       end
     end
+  end
+
+  def require_transaction_ownership
+    @transaction = Transaction.find(params[:id])
+    require_ownership(@transaction.budget.user.id) if @transaction
   end
 end

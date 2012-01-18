@@ -1,8 +1,9 @@
 class EnvelopesController < ApplicationController
+  before_filter :require_envelope_ownership, :except => [:new, :create]
+
   # GET /envelopes/1
   # GET /envelopes/1.json
   def show
-    @envelope = Envelope.find(params[:id])
     @transactions = @envelope.transactions if @envelope.present?
 
     respond_to do |format|
@@ -24,7 +25,6 @@ class EnvelopesController < ApplicationController
 
   # GET /envelopes/1/edit
   def edit
-    @envelope = Envelope.find(params[:id])
   end
 
   # POST /envelopes
@@ -46,8 +46,6 @@ class EnvelopesController < ApplicationController
   # PUT /envelopes/1
   # PUT /envelopes/1.json
   def update
-    @envelope = Envelope.find(params[:id])
-
     respond_to do |format|
       if @envelope.update_attributes(params[:envelope])
         format.html { redirect_to @envelope, notice: 'Envelope was successfully updated.' }
@@ -62,12 +60,18 @@ class EnvelopesController < ApplicationController
   # DELETE /envelopes/1
   # DELETE /envelopes/1.json
   def destroy
-    @envelope = Envelope.find(params[:id])
     @envelope.destroy
 
     respond_to do |format|
       format.html { redirect_to :root }
       format.json { head :ok }
     end
+  end
+
+  private
+
+  def require_envelope_ownership
+    @envelope = Envelope.find(params[:id])
+    require_ownership(@envelope.budget.user.id) if @envelope
   end
 end
