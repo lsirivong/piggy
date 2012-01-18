@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :budgets, :dependent => :destroy
   attr_accessible :email, :password, :password_confirmation
   authenticates_with_sorcery!
   

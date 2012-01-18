@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
   def create
     respond_to do |format|
       if @user = login(params[:email], params[:password])
-        format.html { redirect_back_or_to(:users, :notice => 'Login successful.') }
+        format.html { redirect_back_or_to(:root, :notice => 'Login successful.') }
         format.xml { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { flash.now[:alert] = "Login failed."; render :action => "new" }
@@ -18,6 +18,6 @@ class UserSessionsController < ApplicationController
     
   def destroy
     logout
-    redirect_to(:users, :notice => 'Logged out!')
+    redirect_to(new_user_session_path, :notice => 'Logged out!')
   end
 end

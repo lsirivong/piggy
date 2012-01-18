@@ -1,4 +1,6 @@
 class Budget < ActiveRecord::Base
+  belongs_to :user
+  validates :user_id, :presence => true
   has_many :envelopes, :dependent => :destroy
   has_many :transactions, :through => :envelopes, :order => 'date DESC, created_at DESC'
   validates :start_date, :presence => true
@@ -14,11 +16,11 @@ class Budget < ActiveRecord::Base
   end
   
   def previous_budget
-    self.class.first(:conditions => ["created_at < ?", created_at], :order => "created_at desc")
+    user.budgets.first(:conditions => ["created_at < ?", created_at], :order => "created_at desc")
   end
 
   def next_budget
-    self.class.first(:conditions => ["created_at > ?", created_at], :order => "created_at asc")
+    user.budgets.first(:conditions => ["created_at > ?", created_at], :order => "created_at asc")
   end
   
   include Ledger # requires sum and amount methods
