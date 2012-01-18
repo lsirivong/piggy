@@ -1,4 +1,4 @@
-<% if session[:no_budgets_found] && session[:no_budgets_found] == true %>
+<% if current_user.budgets.none? %>
 <div id="notice-wrap">
   <p>It looks like you haven't created any budgets yet. Use this form to set up your first budget to get started using Piggy.</p>
 </div>
@@ -7,6 +7,6 @@
 
 <%= render 'form' %>
 
-<% unless session[:no_budgets_found] && session[:no_budgets_found] == true %>
+<% if current_user.budgets.any? %>
   <%= link_to 'Cancel', :root %>
 <% end %>

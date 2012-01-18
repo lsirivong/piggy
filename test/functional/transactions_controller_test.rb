@@ -35,7 +35,7 @@ class TransactionsControllerTest < ActionController::TestCase
 
   test "should destroy transaction" do
     assert_difference('Transaction.count', -1) do
-      delete :destroy, id: @transaction.to_param
+      delete :destroy, id: @transaction.id
     end
 
     assert_redirected_to :root
