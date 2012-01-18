@@ -67,6 +67,8 @@ class TransactionsController < ApplicationController
   # DELETE /transactions/1
   # DELETE /transactions/1.json
   def destroy
+    @transaction.destroy
+
     respond_to do |format|
       format.html { redirect_to :root }
       format.js

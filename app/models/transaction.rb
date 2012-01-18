@@ -1,6 +1,7 @@
 class Transaction < ActiveRecord::Base
   validates :date,    :presence => true
   validates :vendor,  :presence => true
+  validates :envelope_id, :presence => true
   validates :amount,  :format   => {
                         :with => /\A-?[[:digit:]]+\.?[[:digit:]]{,2}\Z/,
                         :message => "must be a number with at most two decimal places."

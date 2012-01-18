@@ -42,9 +42,9 @@ class TransactionTest < ActiveSupport::TestCase
     assert @tx_one.errors[:envelope].any?
   end
   
-  test "transaction with nil envelop should be valid" do
+  test "transaction with nil envelop should be invalid" do
     @tx_one.envelope_id = nil
-    assert @tx_one.valid?, "Nil envelope id should be valid"
+    assert @tx_one.invalid?, "Nil envelope id should be invalid"
   end
   
   test "transaction with existing envelope should be valid" do

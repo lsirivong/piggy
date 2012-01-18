@@ -5,12 +5,14 @@ one:
   vendor: MyString
   desc: MyText
   amount: 9.99
+  envelope: one
 
 two:
   date: 2011-12-07
   vendor: MyString
   desc: MyText
   amount: 9.99
+  envelope: two
 
 lunch:
   date: 2011-12-07
