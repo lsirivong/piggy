@@ -13,7 +13,7 @@ class UserSessionsControllerTest < ActionController::TestCase
 
   test "should get destroy" do
     get :destroy
-    assert_redirected_to new_user_session_path
+    assert_redirected_to login_path
   end
 
 end

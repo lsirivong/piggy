@@ -8,22 +8,28 @@
 </head>
 <body>
   <header>
-    <h1><%= link_to "Piggy", :root %><i>50/30/20 money management</i></h1>
+    <h1><%= link_to "Piggy", :root %></h1>
     <div id="nav">
       <% if current_user %>
-        <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-        <%= link_to "Logout", :logout %>
+        <%= link_to "#{current_user.email}", edit_user_path(current_user.id) %>
+        <%= link_to "(Logout)", :logout %>
       <% else %>
         <%= link_to "Register", new_user_path %> |
         <%= link_to "Login", :login %>
       <% end %>
     </div>
-    <div>
-      <p id="notice"><%= notice %></p>
-      <p id="alert"><%= alert %></p>
-    </div>
   </header>
   <div class="main">
+    <% if notice or alert %>
+      <div>
+        <% if notice %>
+          <p id="notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p id="alert"><%= alert %></p>
+        <% end %>
+      </div>
+    <% end %>
     <%= yield %>
 
     <div class="sidebar">
