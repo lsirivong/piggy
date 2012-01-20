@@ -1,7 +1,12 @@
 Piggy::Application.routes.draw do
-  resources :user_sessions, :except => [:index, :edit]
-  match 'login' => 'user_sessions#new', :as => :login
-  match 'logout' => 'user_sessions#destroy', :as => :logout
+  controller :user_sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+  match 'login' => 'user_sessions#new'
+  match 'logout' => 'user_sessions#destroy'
 
   resources :users
 
