@@ -103,6 +103,10 @@ header {
   &, a, a:visited {
     color: #E5F9E4;
   }
+  & a:hover {
+    text-decoration: none;
+    color: #ccfccc;
+  }
 }
 
 #nav {
