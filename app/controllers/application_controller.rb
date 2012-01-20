@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def not_authenticated
-    redirect_to new_user_session_path, :alert => "Please login first."
+    redirect_to login_path, :alert => "Please login first."
   end
 
   def require_ownership(user_id)
