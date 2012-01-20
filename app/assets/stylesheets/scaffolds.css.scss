@@ -83,16 +83,30 @@ a {
 h1, {
   margin: 0;
   padding: 10px 20px 0;
-  background: rgba(0, 0, 0, .85);
   line-height: 1.5;
   font-size: 1em;
   font-style: italic;
+  display: inline;
   a, a:visited, i {
-    color: #E5F9E4;
     text-decoration: none;
   }
   i {
     font-weight: normal;
     float: right;
   }
+}
+
+header {
+  background: rgba(0, 0, 0, .85);
+  padding: 10px 20px 2px;
+  margin: 0;
+  &, a, a:visited {
+    color: #E5F9E4;
+  }
+}
+
+#nav {
+  text-align: right;
+  display: inline;
+  float: right;
 }
