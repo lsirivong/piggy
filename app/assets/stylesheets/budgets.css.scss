@@ -20,8 +20,8 @@ h2 {
   font-size: 1em;
   margin: 18px 0;
   .stat_wrap {
-    width: 42%;
-    padding: 0 4%;
+    min-width: 48%;
+    padding: 0 1%;
     text-align: right;
     float: left;
   }
