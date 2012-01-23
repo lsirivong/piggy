@@ -17,11 +17,11 @@ class UserTest < ActiveSupport::TestCase
       end
     end
 
-    assert latest_date == latest_budget.end_date
+    assert_equal latest_date, latest_budget.end_date
 
     b = Budget.create(:start_date => latest_date + 1, :end_date => latest_date + 2, :amount => 100, :user_id => dave.id)
 
-    assert b.end_date == dave.latest_budget.end_date
+    assert_equal b.end_date, dave.latest_budget.end_date
   end
 
   test "latest_budget should return nil if no budgets" do
@@ -29,4 +29,5 @@ class UserTest < ActiveSupport::TestCase
     assert new_user.budgets.none?
     assert new_user.latest_budget.nil?
   end
+
 end
