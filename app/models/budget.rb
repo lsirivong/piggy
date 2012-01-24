@@ -22,7 +22,15 @@ class Budget < ActiveRecord::Base
   def next_budget
     user.budgets.first(:conditions => ["created_at > ?", created_at], :order => "created_at asc")
   end
-  
+
+  def expired?
+    end_date < Date.today
+  end
+
+  def days_long
+    (end_date - start_date).to_i
+  end
+
   include Ledger # requires sum and amount methods
   def sum
     transactions.sum(:amount)
