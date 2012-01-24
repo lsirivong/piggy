@@ -10,8 +10,14 @@ class UserSessionsController < ApplicationController
         format.html { redirect_back_or_to(:root, :notice => 'Login successful.') }
         format.xml { render :xml => @user, :status => :created, :location => @user }
       else
-        format.html { flash.now[:alert] = "Login failed."; render :action => "new" }
-        format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
+        user = User.find_by_email(params[:email])
+        if user && user.activation_state == "pending"
+            format.html { flash.now[:alert] = "Account needs to be validated."; render :action => "new" }
+            format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
+        else
+          format.html { flash.now[:alert] = "Login failed."; render :action => "new" }
+          format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end

@@ -1,21 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
 one:
-  email: MyString
+  email: MyString@domain.com
   crypted_password: MyString
   salt: MyString
+  activation_state: active
 
 two:
-  email: MyString
+  email: MyString@domain.com
   crypted_password: MyString
   salt: MyString
+  activation_state: active
 
 dave:
   email: dave@dave.com
   crypted_password: crypted
   salt: salt
+  activation_state: active
 
 new_user:
   email: new_here@new.net
   crypted_password: crypted
   salt: salt
+  activation_state: pending

@@ -30,4 +30,15 @@ class UserTest < ActiveSupport::TestCase
     assert new_user.latest_budget.nil?
   end
 
+  test "email without @ should be invalid" do
+    u = users(:one)
+    u.email = "bademail"
+    assert u.invalid?
+  end
+
+  test "email should be valid" do
+    u = users(:one)
+    u.email = "test@test.com"
+    assert u.valid?
+  end
 end
