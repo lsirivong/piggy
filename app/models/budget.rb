@@ -16,11 +16,11 @@ class Budget < ActiveRecord::Base
   end
   
   def previous_budget
-    user.budgets.first(:conditions => ["created_at < ?", created_at], :order => "created_at desc")
+    user.budgets.first(:conditions => ["end_date < ?", end_date], :order => "end_date desc")
   end
 
   def next_budget
-    user.budgets.first(:conditions => ["created_at > ?", created_at], :order => "created_at asc")
+    user.budgets.first(:conditions => ["end_date > ?", end_date], :order => "end_date asc")
   end
 
   def expired?
