@@ -8,7 +8,11 @@ Piggy::Application.routes.draw do
   match 'login' => 'user_sessions#new'
   match 'logout' => 'user_sessions#destroy'
 
-  resources :users
+  resources :users do
+    member do
+      get :activate
+    end
+  end
 
   match 'generate-budgets' => "budgets#generate_budgets"
   resources :budgets, :except => [:index]
