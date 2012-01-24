@@ -8,26 +8,45 @@
 </head>
 <body>
   <header>
-  	<h1><%= link_to "Piggy", :root %><i>50/30/20 money management</i></h1>
+    <h1><%= link_to "Piggy", :root %></h1>
+    <div id="nav">
+      <% if current_user %>
+        <%= link_to "#{current_user.email}", edit_user_path(current_user.id) %>
+        <%= link_to "(Logout)", :logout %>
+      <% else %>
+        <%= link_to "Register", new_user_path %> |
+        <%= link_to "Login", :login %>
+      <% end %>
+    </div>
   </header>
   <div class="main">
-  	<%= yield %>
+    <% if notice or alert %>
+      <div>
+        <% if notice %>
+          <p id="notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p id="alert"><%= alert %></p>
+        <% end %>
+      </div>
+    <% end %>
+    <%= yield %>
 
     <div class="sidebar">
-    	<% if @goals %>
-      	<div class="goals">
-      	  <h2>Goals</h2>
-      	  <% if 0 < @goals.count %>
-        	  <%= render @goals %>
-      	  <% else %>
+      <% if @goals %>
+        <div class="goals">
+          <h2>Goals</h2>
+          <% if 0 < @goals.count %>
+            <%= render @goals %>
+          <% else %>
             <div id="notice-wrap">
               <p>Use goals to save up for expected bills or for a big purchase (<%= link_to 'treat yo self!', 'http://www.youtube.com/watch?v=jcwxHkXAdmM', :target => '_new'%>)</p>
             </div>
-      	  <% end %>
-      	  <%= link_to "Add a new goal", new_goal_path %>
-      	</div>
-    	<% end %>
-  	</div>
+          <% end %>
+          <%= link_to "Add a new goal", new_goal_path %>
+        </div>
+      <% end %>
+    </div>
   </div>
   <footer>
     <%= link_to "About Piggy", "https://github.com/lsirivong/piggy#readme", :target => "_blank" %><br />

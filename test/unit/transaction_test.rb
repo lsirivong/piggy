@@ -36,15 +36,15 @@ class TransactionTest < ActiveSupport::TestCase
   end
   
   test "transaction envelope must exist if assigned" do
-    #set envelope id to something outrageous (ID is never 0)
+    # set envelope id to something outrageous (ID is never 0)
     @tx_one.envelope_id = 0
     assert @tx_one.invalid?, "No envelope should exist with id == 0"
     assert @tx_one.errors[:envelope].any?
   end
   
-  test "transaction with nil envelop should be valid" do
+  test "transaction with nil envelope should be invalid" do
     @tx_one.envelope_id = nil
-    assert @tx_one.valid?, "Nil envelope id should be valid"
+    assert @tx_one.invalid?, "Nil envelope id should be invalid"
   end
   
   test "transaction with existing envelope should be valid" do
@@ -54,7 +54,7 @@ class TransactionTest < ActiveSupport::TestCase
   end
   
   test "transaction goal must exist if assigned" do
-    #set goal id to something outrageous (ID is never 0)
+    # set goal id to something outrageous (ID is never 0)
     @tx_one.goal_id = 0
     assert @tx_one.invalid?, "No goal should exist with id == 0"
     assert @tx_one.errors[:goal].any?
@@ -65,9 +65,9 @@ class TransactionTest < ActiveSupport::TestCase
     assert @tx_one.valid?, "Nil goal id should be valid"
   end
   
-  test "transaction with existing envelop should be valid" do
-    e = goals(:one)
-    @tx_one.goal_id = e.id
+  test "transaction with existing goal should be valid" do
+    goal = goals(:one)
+    @tx_one.goal_id = goal.id
     assert @tx_one.valid?, "Existing goal should be valid"
   end
 end

@@ -2,12 +2,11 @@ class TransactionsController < ApplicationController
   before_filter(:only => [:create, :update]) do |controller|
     return prevent_multiple_submission if controller.request.format.js?
   end
+  before_filter :require_transaction_ownership, :except => [:new, :create]
   
   # GET /transactions/1
   # GET /transactions/1.json
   def show
-    @transaction = Transaction.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.js
@@ -43,6 +42,7 @@ class TransactionsController < ApplicationController
         format.json { render json: @transaction, status: :created, location: @transaction }
       else
         format.html { render action: "new" }
+        format.js
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
@@ -51,15 +51,14 @@ class TransactionsController < ApplicationController
   # PUT /transactions/1
   # PUT /transactions/1.json
   def update
-    @transaction = Transaction.find(params[:id])
-
     respond_to do |format|
-      if @transaction.update_attributes!(params[:transaction])
+      if @transaction.update_attributes(params[:transaction])
         format.html { redirect_to :root, notice: 'Transaction was successfully updated.' }
         format.js
         format.json { head :ok }
       else
         format.html { render action: "edit" }
+        format.js
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
@@ -68,7 +67,6 @@ class TransactionsController < ApplicationController
   # DELETE /transactions/1
   # DELETE /transactions/1.json
   def destroy
-    @transaction = Transaction.find(params[:id])
     @transaction.destroy
 
     respond_to do |format|
@@ -81,7 +79,7 @@ class TransactionsController < ApplicationController
   private
   
   def prevent_multiple_submission
-    unless params[:time].nil?
+    if params[:time].present?
       form_time = Time.parse(params[:time])
       submission = Submit.find_by_time(form_time)
     
@@ -93,5 +91,10 @@ class TransactionsController < ApplicationController
         head :no_content
       end
     end
+  end
+
+  def require_transaction_ownership
+    @transaction = Transaction.find(params[:id])
+    require_ownership(@transaction.budget.user.id) if @transaction
   end
 end

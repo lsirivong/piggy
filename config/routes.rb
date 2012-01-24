@@ -1,9 +1,21 @@
 Piggy::Application.routes.draw do
+  controller :user_sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+  match 'login' => 'user_sessions#new'
+  match 'logout' => 'user_sessions#destroy'
+
+  resources :users
+
+  match 'generate-budgets' => "budgets#generate_budgets"
   resources :budgets, :except => [:index]
 
   resources :goals, :except => [:index]
 
-  resources :dashboards, :only => [:show]
+  resource :dashboard, :only => [:show]
 
   resources :envelopes, :except => [:index]
 
