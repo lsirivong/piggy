@@ -2,7 +2,7 @@
 # The default is nothing which will include only core features (password encryption, login/logout).
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
-Rails.application.config.sorcery.submodules = []
+Rails.application.config.sorcery.submodules = [:user_activation]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -138,7 +138,7 @@ Rails.application.config.sorcery.configure do |config|
                                                                                       # activation code expires. nil for
                                                                                       # never expires.
 
-    # user.user_activation_mailer = nil                                               # your mailer class. Required.
+    user.user_activation_mailer = UserMailer                                          # your mailer class. Required.
 
     # user.activation_needed_email_method_name = :activation_needed_email             # activation needed email method
                                                                                       # on your mailer class.
