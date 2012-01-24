@@ -53,4 +53,14 @@ class BudgetTest < ActiveSupport::TestCase
 
     assert !b.expired?, "budget should not be expired"
   end
+
+  test "days_long returns duration of budget" do
+    today = Date.today
+    tomorrow = Date.tomorrow
+    b = Budget.new(:start_date => today,
+      :end_date => tomorrow,
+      :amount => 100)
+
+    assert_equal 2, b.days_long
+  end
 end

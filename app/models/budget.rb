@@ -27,6 +27,10 @@ class Budget < ActiveRecord::Base
     end_date < Date.today
   end
 
+  def days_long
+    (end_date - start_date).to_i
+  end
+
   include Ledger # requires sum and amount methods
   def sum
     transactions.sum(:amount)
