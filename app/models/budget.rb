@@ -28,7 +28,7 @@ class Budget < ActiveRecord::Base
   end
 
   def days_long
-    (end_date - start_date).to_i
+    (end_date - start_date).to_i + 1
   end
 
   include Ledger # requires sum and amount methods

@@ -89,10 +89,10 @@ class BudgetsController < ApplicationController
       today = Date.today
       budgets_generated = 0
 
-      while latest_budget.expired? || budgets_generated > 10 # Stop before it gets too crazy
+      while latest_budget.expired? && budgets_generated < 52 # Stop before it gets too crazy
 
         new_start = latest_budget.end_date + 1
-        new_end = new_start + latest_budget.days_long
+        new_end = latest_budget.end_date + latest_budget.days_long
 
         new_budget = Budget.new(:amount => latest_budget.amount,
           :start_date => new_start,
