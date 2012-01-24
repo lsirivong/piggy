@@ -21,7 +21,7 @@ class UsersControllerTest < ActionController::TestCase
       post :create, user: @user.attributes
     end
 
-    assert_redirected_to users_path
+    assert_redirected_to :root
   end
 
   test "should show user" do
