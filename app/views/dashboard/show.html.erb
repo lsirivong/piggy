@@ -1,5 +1,5 @@
 <% if @budget.expired? %>
-  <div id="notice-wrap">Your most recent budget is a little old. You could let Piggy <%= link_to 'generate new budgets', :controller => 'dashboard', :action => 'generate_budgets' %> for you, or create a <%= link_to 'new budget', new_budget_path %> yourself.
+  <div id="notice-wrap">Your most recent budget is a little old. You could let Piggy <%= link_to 'generate new budgets', :controller => 'budgets', :action => 'generate_budgets' %> for you, or create a <%= link_to 'new budget', new_budget_path %> yourself.
   </div>
 <% end %>
 
