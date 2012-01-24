@@ -17,8 +17,14 @@ class BudgetsController < ApplicationController
   def new
     session[:no_budgets_found] = Budget.count <= 0
     
-    today = Date.today
-    @budget = Budget.new(:amount => 0, :start_date => today, :end_date => (today + 14)) # 2 weeks
+    if current_user.latest_budget
+      @budget = Budget.new(:amount => current_user.latest_budget.amount,
+        :start_date => current_user.latest_budget.end_date + 1,
+        :end_date => current_user.latest_budget.end_date + 1 + current_user.latest_budget.days_long)
+    else
+      today = Date.today
+      @budget = Budget.new(:amount => 0, :start_date => today, :end_date => (today + 14)) # 2 weeks
+    end
     
     @budget.envelopes << Envelope.new(:name => 'Needs', :budget_percent => 50, :budget => @budget )
     @budget.envelopes << Envelope.new(:name => 'Wants', :budget_percent => 30, :budget => @budget )
