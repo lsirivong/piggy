@@ -45,8 +45,14 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to :users, notice: 'User was successfully created.' }
-        format.json { render json: :users, status: :created, location: @user }
+        auto_login(@user)
+        if current_user
+          format.html { redirect_to :root, notice: 'User was successfully created and logged in.' }
+          format.json { render json: :users, status: :created, location: @user }
+        else
+          format.html { redirect_to :login, notice: 'User was successfully created, but could not log in automatically' }
+          format.json { render json: :users, status: :created, location: @user }
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
