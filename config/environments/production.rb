@@ -47,6 +47,18 @@ Piggy::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => ENV['PIGGY_MAILER_DEFAULT_HOST'] }
+
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => ENV['PIGGY_MAILER_DEFAULT_HOST'],
+    :authentication => "plain",
+    :user_name => ENV['PIGGY_MAILER_SMTP_USERNAME'],
+    :password => ENV['PIGGY_MAILER_SMTP_PASSWORD'],
+    :enable_starttls_auto => true,
+  }
 
   # Enable threaded mode
   # config.threadsafe!
