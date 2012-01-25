@@ -18,6 +18,7 @@ class ActiveSupport::TestCase
   end
 
   def setup
-    login_user(users(:one)) if defined? session
+    @current_user = users(:one)
+    login_user(@current_user) if defined? session
   end
 end

@@ -40,4 +40,27 @@ class TransactionsControllerTest < ActionController::TestCase
 
     assert_redirected_to :root
   end
+
+  test "should not show someone elses transaction" do
+    get :show, id: transactions(:two).to_param
+    assert_redirected_to user_path(@current_user.id)
+  end
+
+  test "should not get edit for someone elses transaction" do
+    get :edit, id: transactions(:two).to_param
+    assert_redirected_to user_path(@current_user.id)
+  end
+
+  test "should not update someone elses transaction" do
+    put :update, id: transactions(:two).to_param, transaction: @transaction.attributes
+    assert_redirected_to user_path(@current_user.id)
+  end
+
+  test "should not destroy someone elses transaction" do
+    assert_no_difference('Transaction.count') do
+      delete :destroy, id: transactions(:two).id
+    end
+
+    assert_redirected_to user_path(@current_user.id)
+  end
 end
