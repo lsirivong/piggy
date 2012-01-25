@@ -4,8 +4,16 @@ one:
   name: MyString
   deadline: 2011-12-08
   amount: 9.99
+  user: one
 
 two:
   name: MyString
   deadline: 2011-12-08
   amount: 9.99
+  user: two
+
+daves_goal:
+  name: I Belong to Dave
+  deadline: 2011-03-01
+  amount: 800
+  user: dave

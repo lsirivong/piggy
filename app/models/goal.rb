@@ -1,5 +1,6 @@
 class Goal < ActiveRecord::Base
   has_many :transactions, :dependent => :nullify
+  belongs_to :user
   
   def total
     sum = transactions.sum(:amount)

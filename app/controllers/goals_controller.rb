@@ -1,9 +1,9 @@
 class GoalsController < ApplicationController
+  before_filter :require_goal_ownership, :except => [:new, :create]
+
   # GET /goals/1
   # GET /goals/1.json
   def show
-    @goal = Goal.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @goal }
@@ -23,13 +23,13 @@ class GoalsController < ApplicationController
 
   # GET /goals/1/edit
   def edit
-    @goal = Goal.find(params[:id])
   end
 
   # POST /goals
   # POST /goals.json
   def create
     @goal = Goal.new(params[:goal])
+    @goal.user_id = current_user.id
 
     respond_to do |format|
       if @goal.save
@@ -45,8 +45,6 @@ class GoalsController < ApplicationController
   # PUT /goals/1
   # PUT /goals/1.json
   def update
-    @goal = Goal.find(params[:id])
-
     respond_to do |format|
       if @goal.update_attributes(params[:goal])
         format.html { redirect_to :root, notice: 'Goal was successfully updated.' }
@@ -61,12 +59,18 @@ class GoalsController < ApplicationController
   # DELETE /goals/1
   # DELETE /goals/1.json
   def destroy
-    @goal = Goal.find(params[:id])
     @goal.destroy
 
     respond_to do |format|
       format.html { redirect_to :root }
       format.json { head :ok }
     end
+  end
+
+  private
+
+  def require_goal_ownership
+    @goal = Goal.find(params[:id])
+    require_ownership(@goal.user.id) if @goal
   end
 end
