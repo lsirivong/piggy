@@ -31,7 +31,7 @@
   <div class="field">
     <%= f.label :goal_id %><br />
     <!-- Should filter out inactive here... -->
-    <%= f.collection_select(:goal_id, Goal.all, :id, :name, :include_blank => true ) %>
+    <%= f.collection_select(:goal_id, current_user.goals, :id, :name, :include_blank => true ) %>
   </div>
   <div class="desc">
     <%= f.label :desc %><br />

@@ -15,7 +15,7 @@
         <% if show_labels %>
           <%= f.label :goal_id, 'Goal' %><br />
         <% end %>
-        <%= f.collection_select(:goal_id, Goal.all, :id, :name, :include_blank => true) %>
+        <%= f.collection_select(:goal_id, current_user.goals, :id, :name, :include_blank => true) %>
       </div>
     <% end %>
     <div class="field inline vendor<%= "_wide" if Goal.count <= 0 %>">
