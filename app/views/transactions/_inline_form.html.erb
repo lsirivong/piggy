@@ -36,7 +36,7 @@
     </div>
   </div>
   
-  <%= hidden_field_tag(:time, DateTime.now, :class => "form_id", :id => "#{dom_id inline_form}_form_time") %>
+  <%= hidden_field_tag(:form_token, "#{dom_id inline_form}_#{DateTime.now}", :class => "form_id", :id => "#{dom_id inline_form}_form_token") %>
   <div class="actions">
     <%= link_to('Cancel', inline_form, :remote => true) if show_cancel %>
     <%= f.submit(:disable_with => "Saving...") %>

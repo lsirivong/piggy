@@ -1,4 +1,4 @@
-$('<%= "##{dom_id(@transaction)}_form_time" %>').val('<%= DateTime.now %>');
+$('<%= "##{dom_id(@transaction)}_form_token" %>').val('<%= "#{dom_id(@transaction)}_#{DateTime.now}" %>');
 
 <% if @transaction.errors.none? %>
   $('#<%= dom_id @transaction %>').replaceWith('<%= escape_javascript(render(@transaction)) %>');
