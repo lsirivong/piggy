@@ -10,6 +10,6 @@ class Envelope < ActiveRecord::Base
     transactions.sum(:amount)
   end
   def amount
-    (budget_percent / 100.0) * budget.amount
+    ((budget_percent / BigDecimal("100")) * budget.amount).round(+2)
   end
 end

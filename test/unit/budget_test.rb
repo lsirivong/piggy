@@ -63,4 +63,30 @@ class BudgetTest < ActiveSupport::TestCase
 
     assert_equal 2, b.days_long
   end
+
+  test "budget envelopes should total budget amount" do
+    budget_of_one_hundred = budgets(:one_hundred)
+
+    sum = 0
+    budget_of_one_hundred.envelopes.each do |env|
+      sum += env.amount
+    end
+
+    assert_equal sum, budget_of_one_hundred.amount
+
+    weird_budget = budgets(:weird)
+    # should be:
+    # 20% of 62.78 => 12.556
+    # if they round down:
+    # total => 62.75
+    # if they round up:
+    # total => 62.8
+
+    sum = 0
+    weird_budget.envelopes.each do |env|
+      sum += env.amount
+    end
+
+    assert_equal weird_budget.amount, sum
+  end
 end

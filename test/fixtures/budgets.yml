@@ -23,3 +23,15 @@ dave_two:
   end_date: 2012-01-27
   amount: 800
   user: dave
+
+one_hundred:
+  start_date: 2012-01-14
+  end_date: 2012-01-27
+  amount: 100
+  user: one
+
+weird:
+  start_date: 2012-01-14
+  end_date: 2012-01-27
+  amount: 62.78
+  user: two
