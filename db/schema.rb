@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120125212032) do
+ActiveRecord::Schema.define(:version => 20120126005538) do
 
   create_table "budgets", :force => true do |t|
     t.date     "start_date"
@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(:version => 20120125212032) do
   end
 
   create_table "submits", :force => true do |t|
-    t.datetime "time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
   end
 
   create_table "transactions", :force => true do |t|

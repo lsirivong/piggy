@@ -1,7 +1,5 @@
 class TransactionsController < ApplicationController
-  before_filter(:only => [:create, :update]) do |controller|
-    return prevent_multiple_submission if controller.request.format.js?
-  end
+  before_filter :prevent_multiple_submission, :only => [:create, :update]
   before_filter :require_transaction_ownership, :except => [:new, :create]
   
   # GET /transactions/1
@@ -79,16 +77,17 @@ class TransactionsController < ApplicationController
   private
   
   def prevent_multiple_submission
-    if params[:time].present?
-      form_time = Time.parse(params[:time])
-      submission = Submit.find_by_time(form_time)
-    
+    if params[:form_token].present?
+      submission = Submit.find_by_token(params[:form_token])
+
       if submission.nil?
-        submission = Submit.new(:time => form_time)
+        submission = Submit.new(:token => params[:form_token])
         submission.save!
       else
-        # respond with nothing, request is halted
-        head :no_content
+        respond_to do |format|
+          format.html { redirect_to :root, notice: 'That form has already been submitted.' }
+          format.js { head :no_content } # respond with nothing, request is halted
+        end
       end
     end
   end
