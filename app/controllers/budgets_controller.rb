@@ -4,7 +4,7 @@ class BudgetsController < ApplicationController
   # GET /budgets/1
   # GET /budgets/1.json
   def show
-    @goals = Goal.all
+    @goals = current_user.goals
 
     respond_to do |format|
       format.html # show.html.erb
