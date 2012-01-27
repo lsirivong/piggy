@@ -8,7 +8,23 @@ class Budget < ActiveRecord::Base
   validate :end_must_be_after_start
   
   accepts_nested_attributes_for :envelopes
+
+  after_create do |budget|
+    budget.user.goals.each do |goal|
+      if goal.deadline > budget.start_date
+        days_to_deadline = goal.deadline - budget.start_date # TODO: check off by one...
+        save_per_day = goal.remaining / days_to_deadline
+        save_for_goal = (-1 * budget.days_long * save_per_day).round(+2)
   
+        Transaction.create(:goal => goal,
+          :vendor => "Save for goal: [#{goal.name}]",
+          :date => budget.end_date,
+          :envelope_id => 0, #budget.envelopes.first,
+          :amount => save_for_goal)
+      end
+    end
+  end
+
   def end_must_be_after_start
     if (end_date.present? && start_date.present? && (end_date <=> start_date) <= 0)
       errors.add(:end_date, "must be after start date")

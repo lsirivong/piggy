@@ -3,7 +3,7 @@
 one:
   name: OneName
   budget: one
-  budget_percent: 0
+  budget_percent: 80
 
 two:
   name: TwoName

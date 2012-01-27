@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  deadline: 2011-12-08
-  amount: 9.99
+  deadline: 2012-03-01
+  amount: 100
   user: one
 
 two:
@@ -14,6 +14,6 @@ two:
 
 daves_goal:
   name: I Belong to Dave
-  deadline: 2011-03-01
+  deadline: 2012-03-01
   amount: 800
   user: dave
