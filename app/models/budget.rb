@@ -17,16 +17,18 @@ class Budget < ActiveRecord::Base
     budget.compute_envelope_amounts
 
     budget.user.goals.each do |goal|
-      if goal.deadline > budget.start_date
-        days_to_deadline = goal.deadline - budget.start_date # TODO: check off by one...
-        save_per_day = goal.remaining / days_to_deadline
-        save_for_goal = (-1 * budget.days_long * save_per_day).round(+2)
+      if goal.deadline > budget.start_date && goal.starts_at < budget.end_date
+        days_in_goal = goal.deadline - goal.starts_at
+        save_per_day = goal.amount / days_in_goal
+        days_of_budget_for_goal = 1 + ([goal.deadline - 1, budget.end_date].min - [goal.starts_at, budget.start_date].max)
+        save_for_goal = (-1 * days_of_budget_for_goal * save_per_day).round(+2)
 
-        Transaction.create(:goal => goal,
+        Transaction.create!(:goal => goal,
           :vendor => "Save for goal: [#{goal.name}]",
-          :date => budget.end_date,
-          :envelope_id => 0, #budget.envelopes.first,
-          :amount => save_for_goal)
+          :date => [goal.deadline - 1, budget.end_date].min,
+          :envelope => budget.envelopes.first,
+          :amount => save_for_goal,
+          :is_generated => true)
       end
     end
   end
