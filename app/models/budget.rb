@@ -23,7 +23,7 @@ class Budget < ActiveRecord::Base
         days_of_budget_for_goal = 1 + ([goal.deadline - 1, budget.end_date].min - [goal.starts_at, budget.start_date].max)
         save_for_goal = (-1 * days_of_budget_for_goal * save_per_day).round(+2)
 
-        Transaction.create!(:goal => goal,
+        Transaction.create(:goal => goal,
           :vendor => "Save for goal: [#{goal.name}]",
           :date => [goal.deadline - 1, budget.end_date].min,
           :envelope => budget.envelopes.first,
