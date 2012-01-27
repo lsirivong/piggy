@@ -67,6 +67,19 @@ class GoalsController < ApplicationController
     end
   end
 
+  def move_to_budget
+    budget = current_user.latest_budget
+    Transaction.create(:goal => @goal,
+      :vendor => "Funding from goal: [#{@goal.name}]",
+      :amount => @goal.total,
+      :envelope => budget.envelopes.first,
+      :date => Date.today,
+      :is_generated => true)
+
+    # "archive" the goal
+    redirect_to budget
+  end
+
   private
 
   def require_goal_ownership
