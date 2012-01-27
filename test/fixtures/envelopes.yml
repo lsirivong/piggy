@@ -15,3 +15,42 @@ meals:
   budget: one
   budget_percent: 20
   
+fifty_for_one_hundred:
+  name: 50%
+  budget_percent: 50
+  budget: one_hundred
+
+thirty_for_one_hundred:
+  name: 30%
+  budget_percent: 30
+  budget: one_hundred
+
+twenty_for_one_hundred:
+  name: 20%
+  budget_percent: 20
+  budget: one_hundred
+
+one_for_weird:
+  name: 20% (1)
+  budget_percent: 20
+  budget: weird
+
+two_for_weird:
+  name: 20% (2)
+  budget_percent: 20
+  budget: weird
+
+three_for_weird:
+  name: 20% (3)
+  budget_percent: 20
+  budget: weird
+
+four_for_weird:
+  name: 20% (4)
+  budget_percent: 20
+  budget: weird
+
+five_for_weird:
+  name: 20% (5)
+  budget_percent: 20
+  budget: weird
