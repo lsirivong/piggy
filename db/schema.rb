@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120127205237) do
+ActiveRecord::Schema.define(:version => 20120127214308) do
 
   create_table "budgets", :force => true do |t|
     t.date     "start_date"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20120127205237) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.date     "starts_at"
+    t.boolean  "is_active",  :default => true
   end
 
   create_table "submits", :force => true do |t|

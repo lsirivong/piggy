@@ -76,8 +76,11 @@ class GoalsController < ApplicationController
       :date => Date.today,
       :is_generated => true)
 
-    # "archive" the goal
-    redirect_to budget
+    if @goal.update_attributes(:is_active => false)
+      redirect_to budget, notice: 'Goal was successfully moved into budget.'
+    else
+      redirect_to :root, notice: 'Unable to archive goal.'
+    end
   end
 
   private
