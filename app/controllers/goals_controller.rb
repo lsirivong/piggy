@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_filter :require_goal_ownership, :except => [:new, :create]
+  before_filter :require_goal_ownership, :except => [:new, :create, :index]
 
   # GET /goals/1
   # GET /goals/1.json
@@ -7,6 +7,17 @@ class GoalsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @goal }
+    end
+  end
+
+  # GET /goals
+  # GET /goals.json
+  def index
+    @all_goals = current_user.goals
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @all_goals}
     end
   end
 
@@ -47,7 +58,7 @@ class GoalsController < ApplicationController
   def update
     respond_to do |format|
       if @goal.update_attributes(params[:goal])
-        format.html { redirect_to :root, notice: 'Goal was successfully updated.' }
+        format.html { redirect_to @goal, notice: 'Goal was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

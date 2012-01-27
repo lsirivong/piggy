@@ -17,7 +17,7 @@ Piggy::Application.routes.draw do
   match 'generate-budgets' => "budgets#generate_budgets"
   resources :budgets, :except => [:index]
 
-  resources :goals, :except => [:index] do
+  resources :goals do
     member do
       get :move_to_budget
     end

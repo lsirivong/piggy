@@ -4,5 +4,6 @@
   <div class="stat remaining"><i><%= financial_format goal.remaining %></i> Remaining</div>
   <div class="actions">
     <%= link_to 'Use Funds in Latest Budget', move_to_budget_goal_path(goal) %> |
+    <%= link_to 'View', goal %> |
     <%= link_to 'Delete', goal, confirm: "Delete goal \"#{goal.name}\"?", method: :delete,  %></div>
 </div>

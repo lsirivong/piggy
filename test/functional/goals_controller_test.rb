@@ -40,7 +40,7 @@ class GoalsControllerTest < ActionController::TestCase
 
   test "should update goal" do
     put :update, id: @goal.to_param, goal: @goal.attributes
-    assert_redirected_to :root
+    assert_redirected_to @goal
   end
 
   test "should not update someone elses goal" do
