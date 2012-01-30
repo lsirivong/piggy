@@ -8,7 +8,7 @@ module ApplicationHelper
 
     li = content_tag(:li, fields, :id => dom_id(transaction))
 
-    link_to_function(name, "add_fields_to_edit_transaction('#{dom_id(transaction)}', '#{escape_javascript(li)}')")
+    link_to_function(name, "add_fields_to_edit_transaction('#{dom_id(transaction)}', '#{escape_javascript(li)}')", :href => edit_transaction_path(transaction))
   end
   
   def recalculate_stats(transaction)

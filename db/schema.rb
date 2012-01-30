@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120125212032) do
+ActiveRecord::Schema.define(:version => 20120127214308) do
 
   create_table "budgets", :force => true do |t|
     t.date     "start_date"
@@ -26,8 +26,9 @@ ActiveRecord::Schema.define(:version => 20120125212032) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.decimal  "budget_percent"
     t.integer  "budget_id"
+    t.decimal  "budget_percent"
+    t.decimal  "computed_amount"
   end
 
   create_table "goals", :force => true do |t|
@@ -37,12 +38,14 @@ ActiveRecord::Schema.define(:version => 20120125212032) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.date     "starts_at"
+    t.boolean  "is_active",  :default => true
   end
 
   create_table "submits", :force => true do |t|
-    t.datetime "time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
   end
 
   create_table "transactions", :force => true do |t|
@@ -54,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20120125212032) do
     t.datetime "updated_at"
     t.integer  "envelope_id"
     t.integer  "goal_id"
+    t.boolean  "is_generated", :default => false
   end
 
   create_table "users", :force => true do |t|

@@ -11,8 +11,15 @@ class BudgetsControllerTest < ActionController::TestCase
   end
 
   test "should create budget" do
+    budget = Budget.new(:user => @current_user,
+      :start_date => Date.today,
+      :end_date => Date.today + 14,
+      :amount => 500 )
+
+    assert budget.valid?
+
     assert_difference('Budget.count') do
-      post :create, budget: @budget.attributes
+      post :create, budget: budget.attributes
     end
 
     assert_redirected_to :root

@@ -7,7 +7,7 @@ one:
   activation_state: active
 
 two:
-  email: MyString@domain.com
+  email: MyString2@domain.com
   crypted_password: MyString
   salt: MyString
   activation_state: active

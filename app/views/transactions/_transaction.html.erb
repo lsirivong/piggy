@@ -1,4 +1,4 @@
-<li id="<%= dom_id transaction %>" >  
+<li id="<%= dom_id transaction %>" <%= "class=generated" if transaction.is_generated %>>
   <%= transaction.vendor %>
   <% invert_transaction = false if local_assigns[:invert_transaction].nil? %>
   <%= amount_tag transaction.amount, invert_transaction %>

@@ -1,5 +1,5 @@
 // reset unique form id
-$('#new_transaction_form_time').val('<%= DateTime.now %>');
+$('#new_transaction_form_token').val('new_transaction_' + '<%= DateTime.now %>');
 
 <% if @transaction.errors.none? %>
   $('#transaction_field_errors').html('');

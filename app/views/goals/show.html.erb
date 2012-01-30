@@ -1,8 +1,8 @@
-<% if notice %>
-  <p id="notice"><%= notice %></p>
-<% end %>
-<h2>Goal:</h2>
-<%= render @goal %>
+<div class="goal-wrap">
+  <%= render @goal %>
+  <%= transaction_list @goal.transactions %>
 
-<%= link_to 'Edit', edit_goal_path(@goal) %> |
-<%= link_to 'Delete', @goal, confirm: "Delete goal \"#{@goal.name}\"?", method: :delete,  %>
+  <%= link_to 'All Goals', goals_path %> |
+  <%= link_to 'Edit', edit_goal_path(@goal) %> |
+  <%= link_to 'Delete', @goal, confirm: "Delete goal \"#{@goal.name}\"?", method: :delete,  %>
+</div>
