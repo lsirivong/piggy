@@ -80,6 +80,12 @@ class GoalsController < ApplicationController
 
   def move_to_budget
     budget = current_user.latest_budget
+
+    if (@goal.is_recurring)
+      goal_recurrance = @goal.recurrance
+      goal_recurrance.save!
+    end
+
     Transaction.create(:goal => @goal,
       :vendor => "Funding from goal: [#{@goal.name}]",
       :amount => @goal.total,

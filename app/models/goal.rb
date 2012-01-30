@@ -1,6 +1,11 @@
 class Goal < ActiveRecord::Base
+  include ActiveSupport::Inflector
+
   has_many :transactions, :dependent => :nullify
   belongs_to :user
+  validate :recurring_goals_must_have_type
+  validates_presence_of :name
+  validates_presence_of :amount
 
   after_create do |goal|
     budget = goal.user.latest_budget
@@ -21,6 +26,21 @@ class Goal < ActiveRecord::Base
     end
   end
 
+  def recurrance_type_display
+    display = ""
+    case self.recurrance_type
+    when nil
+      display = ""
+    when "PER_MONTH"
+      display = "#{ordinalize(self.deadline.day)} of every Month"
+    when "PER_DAY"
+      days = (self.deadline - self.starts_at).to_i
+      display = "Every #{days} #{days > 1 ? pluralize("day") : "day"}"
+    end
+
+    display
+  end
+
   def total
     sum = transactions.sum(:amount)
     sum.magnitude
@@ -28,5 +48,37 @@ class Goal < ActiveRecord::Base
   
   def remaining
     amount - total
+  end
+
+  def recurrance
+    goal_recurrance = nil
+
+    if self.is_recurring && (self.recurrance_type == "PER_MONTH" || self.recurrance_type == "PER_DAY")
+      goal_recurrance = self.dup
+      goal_recurrance.starts_at = self.deadline
+
+      case self.recurrance_type
+      when "PER_MONTH"
+        goal_recurrance.deadline = self.deadline.next_month
+      when "PER_DAY"
+        goal_recurrance.deadline = goal_recurrance.starts_at + self.days_long
+      end
+    end
+
+    goal_recurrance
+  end
+
+  def days_long
+    self.deadline - self.starts_at
+  end
+
+  private
+
+  def recurring_goals_must_have_type
+    if self.is_recurring && self.recurrance_type.nil?
+      self.errors.add(:recurrance_type, "is required for recurring goals")
+    elsif !self.is_recurring && self.recurrance_type.present?
+      self.errors.add(:recurrance_type, "should be nil if not recurring")
+    end
   end
 end
