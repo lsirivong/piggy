@@ -17,6 +17,6 @@ class User < ActiveRecord::Base
   end
 
   def active_goals
-    Goal.find_all_by_user_id_and_is_active(self, true)
+    Goal.find_all_by_user_id_and_is_active(self, true, :order => "deadline DESC")
   end
 end
