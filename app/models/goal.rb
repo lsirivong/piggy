@@ -1,6 +1,9 @@
 class Goal < ActiveRecord::Base
   has_many :transactions, :dependent => :nullify
   belongs_to :user
+  validate :recurring_goals_must_have_type
+  validates_presence_of :name
+  validates_presence_of :amount
 
   after_create do |goal|
     budget = goal.user.latest_budget
@@ -28,5 +31,15 @@ class Goal < ActiveRecord::Base
   
   def remaining
     amount - total
+  end
+
+  private
+
+  def recurring_goals_must_have_type
+    if self.is_recurring && self.recurrance_type.nil?
+      self.errors.add(:recurrance_type, "is required for recurring goals")
+    elsif !self.is_recurring && self.recurrance_type.present?
+      self.errors.add(:recurrance_type, "should be nil if not recurring")
+    end
   end
 end
