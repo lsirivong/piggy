@@ -50,6 +50,28 @@ class Goal < ActiveRecord::Base
     amount - total
   end
 
+  def recurrance
+    goal_recurrance = nil
+
+    if self.is_recurring && (self.recurrance_type == "PER_MONTH" || self.recurrance_type == "PER_DAY")
+      goal_recurrance = self.dup
+      goal_recurrance.starts_at = self.deadline
+
+      case self.recurrance_type
+      when "PER_MONTH"
+        goal_recurrance.deadline = self.deadline.next_month
+      when "PER_DAY"
+        goal_recurrance.deadline = goal_recurrance.starts_at + self.days_long
+      end
+    end
+
+    goal_recurrance
+  end
+
+  def days_long
+    self.deadline - self.starts_at
+  end
+
   private
 
   def recurring_goals_must_have_type
