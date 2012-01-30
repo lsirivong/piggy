@@ -3,54 +3,65 @@
 one:
   name: OneName
   budget: one
-  budget_percent: 0
+  budget_percent: 80
+  computed_amount: 0
 
 two:
   name: TwoName
   budget: two
   budget_percent: 50
+  computed_amount: 0
 
 meals:
   name: Meals for Today
   budget: one
   budget_percent: 20
+  computed_amount: 0
   
 fifty_for_one_hundred:
   name: 50%
   budget_percent: 50
   budget: one_hundred
+  computed_amount: 0
 
 thirty_for_one_hundred:
   name: 30%
   budget_percent: 30
   budget: one_hundred
+  computed_amount: 0
 
 twenty_for_one_hundred:
   name: 20%
   budget_percent: 20
   budget: one_hundred
+  computed_amount: 0
 
 one_for_weird:
   name: 20% (1)
   budget_percent: 20
   budget: weird
+  computed_amount: 0
 
 two_for_weird:
   name: 20% (2)
   budget_percent: 20
   budget: weird
+  computed_amount: 0
 
 three_for_weird:
   name: 20% (3)
   budget_percent: 20
   budget: weird
+  computed_amount: 0
 
 four_for_weird:
   name: 20% (4)
   budget_percent: 20
   budget: weird
+  computed_amount: 0
 
 five_for_weird:
   name: 20% (5)
   budget_percent: 20
   budget: weird
+  computed_amount: 0

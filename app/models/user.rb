@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
   def latest_budget
     budgets.order("end_date DESC").first
   end
+
+  def active_goals
+    Goal.find_all_by_user_id_and_is_active(self, true, :order => "deadline DESC")
+  end
 end

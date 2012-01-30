@@ -1,27 +1,9 @@
-<h1>Listing goals</h1>
+<h3>Listing goals</h3>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Deadline</th>
-    <th>Amount</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="goal-wrap">
+  <% @all_goals.each do |goal| %>
+    <%= render goal %>
+  <% end %>
 
-<% @goals.each do |goal| %>
-  <tr>
-    <td><%= goal.name %></td>
-    <td><%= goal.deadline %></td>
-    <td><%= goal.amount %></td>
-    <td><%= link_to 'Show', goal %></td>
-    <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-    <td><%= link_to 'Destroy', goal, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Goal', new_goal_path %>
+  <%= link_to 'New Goal', new_goal_path %>
+</div>

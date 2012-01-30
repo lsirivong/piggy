@@ -12,9 +12,25 @@ class Budget < ActiveRecord::Base
   after_update do |budget|
     budget.compute_envelope_amounts
   end
-  
+
   after_create do |budget|
     budget.compute_envelope_amounts
+
+    budget.user.goals.each do |goal|
+      if goal.deadline > budget.start_date && goal.starts_at < budget.end_date
+        days_in_goal = goal.deadline - goal.starts_at
+        save_per_day = goal.amount / days_in_goal
+        days_of_budget_for_goal = 1 + ([goal.deadline - 1, budget.end_date].min - [goal.starts_at, budget.start_date].max)
+        save_for_goal = (-1 * days_of_budget_for_goal * save_per_day).round(+2)
+
+        Transaction.create(:goal => goal,
+          :vendor => "Save for goal: [#{goal.name}]",
+          :date => [goal.deadline - 1, budget.end_date].min,
+          :envelope => budget.envelopes.first,
+          :amount => save_for_goal,
+          :is_generated => true)
+      end
+    end
   end
 
   def end_must_be_after_start

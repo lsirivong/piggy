@@ -3,18 +3,28 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .transactions {
-  border: 1px solid;
-  border-radius: 3px;
-  background-color: $transaction_background;
   margin: 0;
-  padding: 6px;
+  padding: 0;
   clear: left;
   list-style-type: none;
   li {
-    border-top: 1px solid;
+    background-color: $transaction_background;
+    padding: 0 6px;
+    border: 1px solid $transaction_border;
     &:first-child {
+      border-radius: 3px 3px 0 0;
+      padding-top: 6px;
+    }
+    &:last-child {
+      border-radius: 0 0 3px 3px;
+      padding-bottom: 6px;
+    }
+    &:nth-child(1n + 2) {
       border-top: none;
     }
+  }
+  .generated {
+    background-color: desaturate($transaction_background, 50%);
   }
 }
 .edit_transaction, #new_transaction {
