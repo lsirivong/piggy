@@ -1,4 +1,6 @@
 class Goal < ActiveRecord::Base
+  include ActiveSupport::Inflector
+
   has_many :transactions, :dependent => :nullify
   belongs_to :user
   validate :recurring_goals_must_have_type
@@ -22,6 +24,21 @@ class Goal < ActiveRecord::Base
           :is_generated => true)
       end
     end
+  end
+
+  def recurrance_type_display
+    display = ""
+    case self.recurrance_type
+    when nil
+      display = ""
+    when "PER_MONTH"
+      display = "#{ordinalize(self.deadline.day)} of every Month"
+    when "PER_DAY"
+      days = (self.deadline - self.starts_at).to_i
+      display = "Every #{days} #{days > 1 ? pluralize("day") : "day"}"
+    end
+
+    display
   end
 
   def total

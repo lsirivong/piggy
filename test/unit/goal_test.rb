@@ -32,4 +32,15 @@ class GoalTest < ActiveSupport::TestCase
     @goal.amount = nil
     assert @goal.invalid?
   end
+
+  test "should return correct display text for recurrance_types" do
+    @goal.is_recurring = true
+    @goal.recurrance_type = "PER_MONTH"
+    @goal.starts_at = Date.new(2012, 1, 1)
+    @goal.deadline = Date.new(2012, 2, 1)
+    assert_equal "1st of every Month", @goal.recurrance_type_display
+
+    @goal.recurrance_type = "PER_DAY"
+    assert_equal "Every 31 days", @goal.recurrance_type_display
+  end
 end
