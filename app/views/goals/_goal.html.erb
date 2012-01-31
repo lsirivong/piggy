@@ -1,6 +1,7 @@
 <div class="goal" id="<%= dom_id goal %>">
   <h3><%= goal.name %></h3>
   <%= content_tag(:p, "(Inactive)", :class => "goal-status") unless goal.is_active? %>
+  <%= content_tag(:p, goal.recurrance_type_display, :class => "goal-recurring-type") if goal.is_recurring %>
   <div class="stat saved"><i><%= financial_format goal.total %></i> Saved</div>
   <div class="stat remaining"><i><%= financial_format goal.remaining %></i> Remaining</div>
   <div class="actions">

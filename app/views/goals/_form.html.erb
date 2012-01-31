@@ -27,6 +27,14 @@
     <%= f.label :amount %><br />
     <%= f.text_field :amount %>
   </div>
+  <div class="field">
+    <%= f.label :is_recurring %><br />
+    <%= f.check_box :is_recurring %>
+  </div>
+  <div class="field">
+    <%= f.label :recurrance_type %><br />
+    <%= f.select :recurrance_type, get_recurrance_types, :include_blank => true %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
